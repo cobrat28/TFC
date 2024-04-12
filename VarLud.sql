@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-04-2024 a las 22:11:44
+-- Tiempo de generación: 12-04-2024 a las 14:57:03
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -18,8 +18,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `varlud analytics`
+-- Base de datos: `varlud`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empresas`
+--
+
+CREATE TABLE `empresas` (
+  `CIF` varchar(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `empresas`
+--
+
+INSERT INTO `empresas` (`CIF`) VALUES
+('Q87654321');
 
 -- --------------------------------------------------------
 
@@ -28,8 +45,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `encuestas` (
-  `ID_Empresa` varchar(9) NOT NULL,
-  `ID_Encuesta` int(11) NOT NULL
+  `ID_encuesta` int(11) NOT NULL,
+  `CIF` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -43,6 +60,49 @@ CREATE TABLE `login` (
   `contraseña` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `login`
+--
+
+INSERT INTO `login` (`correo`, `contraseña`) VALUES
+('prueba@gmail.com', '$2y$10$vXuoZGngXP9w5RTa3Iba8e0oQN6ATgJnMiYY9Z0zcaMvtIozOdO7a');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `op_check`
+--
+
+CREATE TABLE `op_check` (
+  `ID_op_chk` varchar(50) NOT NULL,
+  `ID_pregunta` int(11) NOT NULL,
+  `valor` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `op_radio`
+--
+
+CREATE TABLE `op_radio` (
+  `ID_op_rad` varchar(50) NOT NULL,
+  `ID_pregunta` int(11) NOT NULL,
+  `valor` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `op_select`
+--
+
+CREATE TABLE `op_select` (
+  `ID_op_sel` varchar(50) NOT NULL,
+  `ID_pregunta` int(11) NOT NULL,
+  `valor` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -50,10 +110,10 @@ CREATE TABLE `login` (
 --
 
 CREATE TABLE `preguntas` (
-  `ID_Pregunta` int(11) NOT NULL,
-  `ID_Encuesta` int(11) NOT NULL,
-  `Tipo` varchar(20) NOT NULL,
-  `Texto` varchar(500) NOT NULL
+  `ID_pregunta` int(11) NOT NULL,
+  `ID_encuesta` int(11) NOT NULL,
+  `tipo` varchar(3) NOT NULL DEFAULT 'txt',
+  `texto` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -63,9 +123,11 @@ CREATE TABLE `preguntas` (
 --
 
 CREATE TABLE `respuestas` (
-  `ID_Pregunta` int(11) NOT NULL,
+  `ID_respuesta` varchar(500) NOT NULL,
+  `ID_pregunta` int(11) NOT NULL,
+  `ID_encuesta` int(11) NOT NULL,
   `DNI` varchar(9) NOT NULL,
-  `Respuesta` varchar(500) NOT NULL
+  `respuesta` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -75,23 +137,38 @@ CREATE TABLE `respuestas` (
 --
 
 CREATE TABLE `usuarios` (
-  `Nombre` varchar(50) NOT NULL,
-  `Apellidos` varchar(50) NOT NULL,
-  `Correo` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellidos` varchar(50) NOT NULL,
+  `fecha_nac` date NOT NULL,
+  `correo` varchar(50) NOT NULL,
   `DNI` varchar(9) NOT NULL,
-  `ID_Empresa` varchar(9) NOT NULL COMMENT 'Número de empresa'
+  `CIF` varchar(9) NOT NULL,
+  `admin` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`nombre`, `apellidos`, `fecha_nac`, `correo`, `DNI`, `CIF`, `admin`) VALUES
+('Francisco', 'vargas de gracia', '2024-04-01', 'prueba@gmail.com', '12345678Q', 'Q87654321', 1);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `empresas`
+--
+ALTER TABLE `empresas`
+  ADD PRIMARY KEY (`CIF`);
+
+--
 -- Indices de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  ADD PRIMARY KEY (`ID_Encuesta`),
-  ADD UNIQUE KEY `ID_Empresa` (`ID_Empresa`);
+  ADD PRIMARY KEY (`ID_encuesta`),
+  ADD UNIQUE KEY `CIF` (`CIF`);
 
 --
 -- Indices de la tabla `login`
@@ -100,17 +177,40 @@ ALTER TABLE `login`
   ADD PRIMARY KEY (`correo`);
 
 --
+-- Indices de la tabla `op_check`
+--
+ALTER TABLE `op_check`
+  ADD PRIMARY KEY (`ID_op_chk`),
+  ADD UNIQUE KEY `ID_pregunta` (`ID_pregunta`);
+
+--
+-- Indices de la tabla `op_radio`
+--
+ALTER TABLE `op_radio`
+  ADD PRIMARY KEY (`ID_op_rad`),
+  ADD UNIQUE KEY `ID_pregunta` (`ID_pregunta`);
+
+--
+-- Indices de la tabla `op_select`
+--
+ALTER TABLE `op_select`
+  ADD PRIMARY KEY (`ID_op_sel`),
+  ADD UNIQUE KEY `ID_pregunta` (`ID_pregunta`);
+
+--
 -- Indices de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  ADD PRIMARY KEY (`ID_Pregunta`),
-  ADD UNIQUE KEY `ID_Encuesta` (`ID_Encuesta`);
+  ADD PRIMARY KEY (`ID_pregunta`),
+  ADD UNIQUE KEY `ID_encuesta` (`ID_encuesta`);
 
 --
 -- Indices de la tabla `respuestas`
 --
 ALTER TABLE `respuestas`
-  ADD UNIQUE KEY `ID_Pregunta` (`ID_Pregunta`),
+  ADD PRIMARY KEY (`ID_respuesta`),
+  ADD UNIQUE KEY `ID_pregunta` (`ID_pregunta`),
+  ADD UNIQUE KEY `ID_encuesta` (`ID_encuesta`),
   ADD UNIQUE KEY `DNI` (`DNI`);
 
 --
@@ -118,8 +218,8 @@ ALTER TABLE `respuestas`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`DNI`),
-  ADD UNIQUE KEY `ID_Empresa` (`ID_Empresa`),
-  ADD UNIQUE KEY `Correo` (`Correo`);
+  ADD UNIQUE KEY `correo` (`correo`),
+  ADD UNIQUE KEY `CIF` (`CIF`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -129,37 +229,62 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  MODIFY `ID_Encuesta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_encuesta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `ID_Pregunta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_pregunta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `login`
+-- Filtros para la tabla `encuestas`
 --
-ALTER TABLE `login`
-  ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`correo`) REFERENCES `usuarios` (`Correo`);
+ALTER TABLE `encuestas`
+  ADD CONSTRAINT `encuestas_ibfk_1` FOREIGN KEY (`CIF`) REFERENCES `empresas` (`CIF`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `op_check`
+--
+ALTER TABLE `op_check`
+  ADD CONSTRAINT `op_check_ibfk_1` FOREIGN KEY (`ID_pregunta`) REFERENCES `preguntas` (`ID_pregunta`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `op_radio`
+--
+ALTER TABLE `op_radio`
+  ADD CONSTRAINT `op_radio_ibfk_1` FOREIGN KEY (`ID_pregunta`) REFERENCES `preguntas` (`ID_pregunta`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `op_select`
+--
+ALTER TABLE `op_select`
+  ADD CONSTRAINT `op_select_ibfk_1` FOREIGN KEY (`ID_pregunta`) REFERENCES `preguntas` (`ID_pregunta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  ADD CONSTRAINT `preguntas_ibfk_1` FOREIGN KEY (`ID_Encuesta`) REFERENCES `encuestas` (`ID_Encuesta`),
-  ADD CONSTRAINT `preguntas_ibfk_2` FOREIGN KEY (`ID_Pregunta`) REFERENCES `respuestas` (`ID_Pregunta`);
+  ADD CONSTRAINT `preguntas_ibfk_1` FOREIGN KEY (`ID_encuesta`) REFERENCES `encuestas` (`ID_encuesta`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `respuestas`
+--
+ALTER TABLE `respuestas`
+  ADD CONSTRAINT `respuestas_ibfk_1` FOREIGN KEY (`DNI`) REFERENCES `usuarios` (`DNI`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `respuestas_ibfk_2` FOREIGN KEY (`ID_encuesta`) REFERENCES `encuestas` (`ID_encuesta`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `respuestas_ibfk_3` FOREIGN KEY (`ID_pregunta`) REFERENCES `preguntas` (`ID_pregunta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`ID_Empresa`) REFERENCES `encuestas` (`ID_Empresa`),
-  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`DNI`) REFERENCES `respuestas` (`DNI`);
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`correo`) REFERENCES `login` (`correo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`CIF`) REFERENCES `empresas` (`CIF`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
