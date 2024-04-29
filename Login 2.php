@@ -1,38 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>Iniciar sesión</title>
 </head>
 <body>
-
+    <h2>Iniciar sesión</h2>
+    <form method="POST">
+        <div>Usuario:
+            <input type="text" name="usuario" required><br>
+            Contraseña:
+            <input type="password" name="contrasena" required></div><br>
+            <input type="submit" value="Iniciar sesión">
+    </form>
     <?php
-        session_start();
 
-        if (isset($_SESSION['email'])) {
-            session_destroy();
-            header('Location: login.php');
-        }
-        require('encabezado.php');
     ?>
-
-    <div class="bodyer">   
-        <form action="principal.php" method="post">
-            <label for='email'>Email: </label>
-            <input name="email" type="email"><br /><br />
-            <label for='contr'>Contraseña: </label>
-            <input name="contr" type="password"><br /><br />
-            <input type="submit" value="Acceder"><br />
-            
-            <?php
-                if (isset($_GET['error'])){
-                    echo "<br /><label>El usuario o la contraseña son incorrectos.</label>";
-
-                }
-            ?>
-        </form>
-    </div>
-    
-    <a href="registro.php"> Regístrate aquí </a>
-
 </body>
 </html>
