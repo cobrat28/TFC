@@ -10,7 +10,7 @@
         <div>Usuario:
             <input type="text" name="usuario" required><br>
             Contraseña:
-            <input type="password" name="contrasena" required></div><br>
+            <input type="password" name="passwd" required></div><br>
             <input type="submit" value="Iniciar sesión">
     </form>
     <?php
