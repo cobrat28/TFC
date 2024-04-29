@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Iniciar sesión</title>
+    <title>VarLud Analytics</title>
 </head>
 <body>
     <h2>Iniciar sesión</h2>
