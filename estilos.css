@@ -47,3 +47,10 @@
     bottom: 125;
     font-weight: bold;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Esto centra verticalmente también si el contenido es corto */
+}
