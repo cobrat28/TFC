@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>VarLud Analytics</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+
+    </style>
 </head>
-<body>
-    <h2>Iniciar sesión</h2>
-    <form action="Procesa_login.php" method="POST">
-        <div>Correo:
-            <input type="text" name="email" required><br>
-            Contraseña:
-            <input type="password" name="passwd" required></div><br>
-            <input type="submit" value="Iniciar sesión">
+<body class="body_print">
+    <form action="Procesa_login.php" method="POST" class="form">
+        <h2>Iniciar sesión</h2>
+        <div>
+            <label for="email">Correo:</label><br>
+            <input type="text" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="passwd">Contraseña:</label><br>
+            <input type="password" id="passwd" name="passwd" required>
+        </div>
+        <br>
+        <input type="submit" value="Iniciar sesión">
     </form>
     <?php
 
