@@ -15,7 +15,7 @@
             <div class="tres"><p><a href=https://google.com>Empresas</a></p></div>
             <div class="cuatro"><p><a href=mi_perfil.php>Mi Perfil</a></p></div>
         </div>
-
+<hr>
         <div style="display: flex; flex-wrap: wrap; height: 100%;">
             <div id="izq" style=" margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: yellow; border-radius: 25px;"><p>prueba</p></div>
             <div id="cen" style=" margin-left: 10% ; margin-top : 15%; height: 45%; width : 20%; background-color: lightgreen;border-radius: 25px; "><p>prueba</p></div>
