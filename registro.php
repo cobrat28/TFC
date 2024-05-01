@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
     ?>
     
-    <h1>Bienvenido a Tracers, por favor introduce tus datos.</h1>
+    <h1>Bienvenido a VarLud Analytics, por favor introduce tus datos.</h1>
     <!--formulario con todos los datos para la tabla, se vendrá al registro por GET, y al enviar el formulario, ya se énviará a la página principal-->
     <form action="" method="POST">
         Nombre: <input type="text" name="nombre"><br>
