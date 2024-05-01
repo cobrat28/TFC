@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>VarLud Analytics</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="CSS\estilos.css">
 </head>
 <body class="body_print">
     <form action="Procesa_login.php" method="POST" class="form">
