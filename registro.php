@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<meta charset="UTF-8">
+    <title>VarLud Analytics</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body class="body_print">
 <?php
@@ -9,18 +12,43 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
     ?>
     
-    <h1>Bienvenido a VarLud Analytics, por favor introduce tus datos.</h1>
+    <h1>Bienvenido a VarLud Analytics.</h1>
     <!--formulario con todos los datos para la tabla, se vendrá al registro por GET, y al enviar el formulario, ya se énviará a la página principal-->
-    <form action="" method="POST">
-        Nombre: <input type="text" name="nombre"><br>
-        Apellidos: <input type="text" name="ape"><br>
-        DNI: <input type="text" name="dni"><br>
-        Fecha nacimiento: <input type="date" name="fec_nac"><br>
-        CIF de la empresa: <input type="text" name="cif"><br>
-        Nombre de la empresa: <input type="text" name="emp"><br>
-        Email: <input type="text" name="email"><br>
-        Contraseña: <input type="password" name="passwd"><br>
-        <input type="submit" name="Enviar">
+    <form action="" method="POST" class="form">
+        <h2>Por favor introduce tus datos</h2>
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br>
+        </div>
+        <div>
+            <label for="ape">Apellidos:</label>
+            <input type="text" id="ape" name="ape" required><br>
+        </div>
+        <div>
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" required><br>
+        </div>
+        <div>
+            <label for="fec_nac">Fecha de nacimiento:</label>
+            <input type="date" id="fec_nac" name="fec_nac" required><br>
+        </div>
+        <div>
+            <label for="cif">CIF de la empresa:</label>
+            <input type="text" id="cif" name="cif" required><br>
+        </div>
+        <div>
+            <label for="emp">Nombre de la empresa:</label>
+            <input type="text" id="emp" name="emp" required><br>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required><br>
+        </div>
+        <div>
+            <label for="passwd">Contraseña:</label>
+            <input type="password" id="passwd" name="passwd" required><br>
+        </div>
+        <input type="submit" value="Enviar">
     </form>
     <?php
     }else{
