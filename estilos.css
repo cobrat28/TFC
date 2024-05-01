@@ -52,5 +52,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Esto centra verticalmente también si el contenido es corto */
+    height: 100vh;
 }
