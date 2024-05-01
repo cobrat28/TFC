@@ -1,0 +1,49 @@
+#top{
+
+    background-color: #a5cfff;
+    height : 15%;
+    width: 100%;
+}
+
+.body{
+
+    display: grid;
+
+    grid-template-areas:
+
+     "a b b b b b b c d e";
+     position: relative;
+}
+
+.uno{
+
+    grid-area: a;
+
+}
+
+.dos{
+
+    grid-area: c;
+    text-align: center;
+    position:absolute ;
+    bottom: 125;
+    font-weight: bold;
+}
+
+.tres{
+
+    grid-area: d;
+    text-align: center;
+    position:absolute ;
+    bottom: 125;
+    font-weight: bold;
+}
+
+.cuatro{
+
+    grid-area: e;
+    text-align: center;
+    position:absolute ;
+    bottom: 125;
+    font-weight: bold;
+}
