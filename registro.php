@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
         DNI: <input type="text" name="dni"><br>
         Fecha nacimiento: <input type="date" name="fec_nac"><br>
         CIF de la empresa: <input type="text" name="cif"><br>
+        Nombre de la empresa: <input type="text" name="emp"><br>
         Email: <input type="text" name="email"><br>
         Contraseña: <input type="password" name="passwd"><br>
         <input type="submit" name="Enviar">
@@ -24,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
         $ape=$_POST["ape"];
         $dni=$_POST["dni"];
         $cif=$_POST["cif"];
+        $emp=$_POST["emp"];
         $fec_nac=$_POST["fec_nac"];
         $correo=$_POST["email"];
         $passwd=password_hash($_POST["passwd"], PASSWORD_DEFAULT);
@@ -31,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
     $exist=mysqli_query($bd1, "SELECT * FROM empresas where CIF='$cif'");
     if (mysqli_num_rows($exist) == 0) {
-        mysqli_query($bd1, "INSERT INTO empresas (CIF) VALUES ('$cif')");
+        mysqli_query($bd1, "INSERT INTO empresas (CIF, nombre) VALUES ('$cif', '$emp')");
     }else{
 
     }
