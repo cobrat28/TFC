@@ -1,11 +1,6 @@
-#top{
 
-    background-color: #a5cfff;
-    height : 15%;
-    width: 100%;
-}
 
-.body{
+.top{
 
     display: grid;
 

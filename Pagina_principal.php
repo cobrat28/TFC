@@ -9,8 +9,8 @@
 
     <body>
 
-        <div id="top" class="body">
-            <div class="uno" > <img src="Logo_solo.jpg" height="53%"></div>
+        <div class="top">
+            <div class="uno" > <img src="Logo_solo.jpg" height="30%"></div>
             <div class="dos"><p><a href=https://google.com>Encuestas</a></p></div>
             <div class="tres"><p><a href=https://google.com>Empresas</a></p></div>
             <div class="cuatro"><p><a href=https://google.com>Mi Perfil</a></p></div>
