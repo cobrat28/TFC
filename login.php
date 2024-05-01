@@ -22,8 +22,5 @@
         <br>
         <input type="submit" value="Iniciar sesión">
     </form>
-    <?php
-
-    ?>
 </body>
 </html>

@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+</head>
+<body class="body_print">
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "GET"){
@@ -45,3 +50,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     header("Location: Pagina_principal.php");
     }
     ?>
+</body>
+</html>
