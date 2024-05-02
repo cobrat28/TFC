@@ -61,3 +61,11 @@
 .form div {
     margin-bottom: 10px;
 }
+
+.fondo{
+    background-image: url("Imagenes\Fondo.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -16,7 +16,7 @@
             <div class="cuatro"><p><a href=perfil.php>Mi Perfil</a></p></div>
         </div>
 
-        <div style="display: flex; flex-wrap: wrap; height: 100%; margin-top: 0%; background-color: red">
+        <div class="fondo" style="display: flex; flex-wrap: wrap; height: 100%; margin-top: 0%;">
             <div id="izq" style=" margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: yellow; border-radius: 25px;"><p>prueba</p></div>
             <div id="cen" style=" margin-left: 10% ; margin-top : 15%; height: 45%; width : 20%; background-color: lightgreen;border-radius: 25px; "><p>prueba</p></div>
             <div id="der" style=" margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: #e96a6a;border-radius: 25px;"><p>prueba</p></div>
