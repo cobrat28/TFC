@@ -1,10 +1,9 @@
 
 
 .top{
-    height: 15%;
-    width: 100%;
+    height: 14%;
     display: grid;
-
+    background-color: aqua;
     grid-template-areas:
 
      "a b b b b b b c d e";
@@ -22,7 +21,7 @@
     grid-area: c;
     text-align: center;
     position:absolute ;
-    bottom: 125;
+    bottom: 150;
     font-weight: bold;
 }
 
@@ -31,7 +30,7 @@
     grid-area: d;
     text-align: center;
     position:absolute ;
-    bottom: 125;
+    bottom: 150;
     font-weight: bold;
 }
 
@@ -40,7 +39,7 @@
     grid-area: e;
     text-align: center;
     position:absolute ;
-    bottom: 125;
+    bottom: 150;
     font-weight: bold;
 }
 
