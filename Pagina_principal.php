@@ -4,7 +4,7 @@
 
         <title>Varlud Analytics</title>
 
-        <link rel="stylesheet" href="estilos.css">
+        <link rel="stylesheet" href="CSS/estilos.css">
     </head>
 
     <body>
