@@ -13,7 +13,7 @@
             <div class="uno" > <img src="Imagenes/Logo_solo.jpg" height="50%"></div>
             <div class="dos"><p><a href=https://google.com>Encuestas</a></p></div>
             <div class="tres"><p><a href=https://google.com>Empresas</a></p></div>
-            <div class="cuatro"><p><a href=mi_perfil.php>Mi Perfil</a></p></div>
+            <div class="cuatro"><p><a href=perfil.php>Mi Perfil</a></p></div>
         </div>
 <hr>
         <div style="display: flex; flex-wrap: wrap; height: 100%;">
