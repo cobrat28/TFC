@@ -18,28 +18,33 @@
         $cif=$dato1["CIF"];
         $correo=$dato1["correo"];
         }
-     echo "<a href='Pagina_principal.php'> Inicio. </a>";
 ?>
     <form action="Procesa_modificacion.php" method="POST" class="form">
         <div>
             <label>Nombre:</label><br>
-            <input type="text" name="nombre" default= <?php $nombre?>>
+            <p> <?php echo $nombre ?> </p><br>
+            <input type="text" name="nombre">
         </div>
         <div>
             <label>Apellidos:</label><br>
-            <input type="text" name="apellido" default= <?php $ape?>>
+            <p> <?php echo $ape ?> </p><br>
+            <input type="text" name="ape">
         </div>
         <div>
             <label>CIF:</label><br>
-            <input type="text" name="cif" default= <?php $cif?>>
+            <p> <?php echo $cif ?> </p><br>
+            <input type="text" name="cif">
         </div>
         <div>
             <label>Correo:</label><br>
-            <input type="text" name="email" default= <?php $cif?>>
+            <p> <?php echo $correo ?> </p><br>
+            <input type="text" name="correo">
         </div>
         <br>
         <input type="submit" value="Iniciar sesión">
     </form>
+<a href='Pagina_principal.php'> Inicio. </a>
+
 <?php } else{
     header("Location: Login.php");
  } ?>

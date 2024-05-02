@@ -20,6 +20,7 @@ if(isset($_POST["email"]) && isset($_POST["passwd"])) {
 
             foreach ($query2 as $dato2) {
                 $_SESSION["DNI"] = $dato2["DNI"];
+                $_SESSION["CIF"] = $dato2["CIF"];
             }
             header("Location: pagina_principal.php");
         }else {
