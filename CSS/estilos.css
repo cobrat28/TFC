@@ -240,6 +240,8 @@
     place-items: center;
     height: 100vh;
     margin: 0;
+    background-image: url("../Imagenes/Fondo.jpg");
+    background-size: cover;
 }
 
 .form {
@@ -254,10 +256,7 @@
     margin-bottom: 10px;
 }
 
-.fondo{
-    background-image: url("Imagenes\Fondo.jpg");
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
+.fondo {
+    background-image: url("../Imagenes/Fondo.jpg");
     background-size: cover;
 }
