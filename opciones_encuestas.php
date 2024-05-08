@@ -3,8 +3,8 @@ session_start();
 $dni = $_SESSION["DNI"];
 $_SESSION["preg"] = 0;
 $bd = mysqli_connect("localhost", "root", "", "varlud");
-$query = ($bd,"SELECT * FROM usuarios WHERE DNI = $dni");
-foreach($query as $data){
+$query = mysqli_query($bd, "SELECT * FROM usuarios WHERE DNI = $dni");
+foreach ($query as $data){
     $admin = $data["admin"];
 }
 if ($admin = 1){

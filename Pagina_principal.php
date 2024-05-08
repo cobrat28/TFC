@@ -13,13 +13,19 @@
     <body class="fondo" >
         <?php 
             $bd=mysqli_connect("localhost", "root", "", "varlud");
-            $query1=mysqli_query($bd, "SELECT ID_encuesta FROM encuestas ORDER BY desc LIMIT 3;");
+            $query1=mysqli_query($bd, "SELECT ID_encuesta FROM encuestas ORDER BY ID_encuesta desc LIMIT 3;");
+            $arr = array();
             foreach($query1 as $data){
-                $cod"$i" = $data["ID_encuesta"];
+                $id = $data["ID_encuesta"];
+                $arr[] = $id;
             }
+            $cod0 = $arr[0];
+            $cod1 = $arr[1];
+            $cod2 = $arr[2];
             $query2=mysqli_query($bd, "SELECT * FROM encuestas WHERE ID_encuesta = $cod0");
             $query3=mysqli_query($bd, "SELECT * FROM encuestas WHERE ID_encuesta = $cod1");
             $query4=mysqli_query($bd, "SELECT * FROM encuestas WHERE ID_encuesta = $cod2");
+            if(mysqli_num_rows($query2) > 0){
             foreach($query2 as $data2){
                 $nom1 = $data2["nombre"];
                 $cif1 = $data2["CIF"];
@@ -32,6 +38,9 @@
                 $nom3 = $data4["nombre"];
                 $cif3 = $data4["CIF"];
             }
+        }else{
+            echo 'funciona hasta cierto punto';
+        }
             $query5=mysqli_query($bd, "SELECT * FROM empresas WHERE CIF = $cif1");
             $query6=mysqli_query($bd, "SELECT * FROM empresas WHERE CIF = $cif2");
             $query7=mysqli_query($bd, "SELECT * FROM empresas WHERE CIF = $cif3");

@@ -21,31 +21,48 @@ if(isset($_SESSION["admin"])){
             let cant = document.GetElementById("<?php echo $i;?>");
             function opcionesOnChange() {
                 var opcionSeleccionada = select.value;
-    var contenedor = document.getElementById('contenedor');
+                var contenedor = document.getElementById('contenedor');
 
-    // Limpiar el contenedor antes de añadir nuevas cajas de texto
-    contenedor.innerHTML = '';
+                // Limpiar el contenedor antes de añadir nuevas cajas de texto
+                contenedor.innerHTML = '';
 
-    // Añadir cajas de texto según la opción seleccionada
-    if (opcionSeleccionada === 'opcion1') {
-        agregarCajasTexto(contenedor, 2); // Ejemplo: 2 cajas de texto para opción 1
-    } else if (opcionSeleccionada === 'opcion2') {
-        agregarCajasTexto(contenedor, 3); // Ejemplo: 3 cajas de texto para opción 2
-    } else if (opcionSeleccionada === 'opcion3') {
-        agregarCajasTexto(contenedor, 1); // Ejemplo: 1 caja de texto para opción 3
-    }
-}
+                // Añadir cajas de texto según la opción seleccionada
+                if (opcionSeleccionada === 'radio') {
+                    agregarCajasTexto(contenedor, 2); 
+                    <button onclick="caja">Añadir</button>
+                } else if (opcionSeleccionada === 'check') {
+                    agregarCajasTexto(contenedor, 2); 
+                    <button onclick="caja">Añadir</button>
+                } else if (opcionSeleccionada === 'select') {
+                    agregarCajasTexto(contenedor, 2); 
+                    <button onclick="caja">Añadir</button>
+                }
+            }
+            function agregarCajasTexto(contenedor, cantidad) {
+                for (var i = 0; i < cantidad; i++) {
+                    var input = document.createElement('input');
+                    input.type = 'text';
+                   // Añadir la nueva caja de texto al contenedor
+                    contenedor.appendChild(input);
+                }
+            }
+            function caja() {
+                var input = document.createElement('input');
+                input.type = 'text';
+                // Añadir la nueva caja de texto al contenedor
+                contenedor.appendChild(input);
+                }
+            
+            function agregarCajasTexto(contenedor, cantidad) {
+                for (var i = 0; i < cantidad; i++) {
+                    // Crear un nuevo elemento de entrada de texto (input)
+                    var input = document.createElement('input');
+                    input.type = 'text'; // Tipo de input es texto
 
-function agregarCajasTexto(contenedor, cantidad) {
-    for (var i = 0; i < cantidad; i++) {
-        // Crear un nuevo elemento de entrada de texto (input)
-        var input = document.createElement('input');
-        input.type = 'text'; // Tipo de input es texto
-
-        // Añadir la nueva caja de texto al contenedor
-        contenedor.appendChild(input);
-    }
-}
+                    // Añadir la nueva caja de texto al contenedor
+                    contenedor.appendChild(input);
+                }
+            }
 
         </script>
     <?php
