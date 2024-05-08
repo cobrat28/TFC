@@ -2,7 +2,8 @@
 
     <head>
 
-        <title>Varlud Analytics</title>
+    <title>VarLud Analytics</title>
+    <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.jpg">
 
         <link rel="stylesheet" href="CSS\estilos.css">
         <meta charset="UTF-8">

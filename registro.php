@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-    <title>VarLud Analytics</title>
+<title>VarLud Analytics</title>
+    <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.jpg">
     <link rel="stylesheet" href="CSS\estilos.css">
 </head>
 <body class="body_print">
