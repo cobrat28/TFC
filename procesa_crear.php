@@ -8,9 +8,9 @@ if(isset($_SESSION["admin"])){
     <?php
     for(i=1; i<=$preg; i++){
         ?>
-        Pregunta: <input type="text" name="<?php echo $txt'"$i"';?>"><br>
+        Pregunta: <input type="text" name="<?php echo 'txt' . $i;?>"><br>
         Tipo de opciones:
-        <select id="<?php echo $i;?>" name="<?php echo $op'"$i"';?>" onchange="opcionesOnChange()">
+        <select id="<?php echo $i;?>" name="<?php echo 'op' . $i;?>" onchange="opcionesOnChange()">
             <option value="texto">Caja de texto</option>
             <option value="radio">Botones radio</option>
             <option value="check">Botones check</option>
@@ -52,18 +52,6 @@ if(isset($_SESSION["admin"])){
                 // Añadir la nueva caja de texto al contenedor
                 contenedor.appendChild(input);
                 }
-            
-            function agregarCajasTexto(contenedor, cantidad) {
-                for (var i = 0; i < cantidad; i++) {
-                    // Crear un nuevo elemento de entrada de texto (input)
-                    var input = document.createElement('input');
-                    input.type = 'text'; // Tipo de input es texto
-
-                    // Añadir la nueva caja de texto al contenedor
-                    contenedor.appendChild(input);
-                }
-            }
-
         </script>
     <?php
     }else{
