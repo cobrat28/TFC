@@ -11,7 +11,11 @@ if(isset($_SESSION["admin"])){
         foreach ( $query as $data){
             $_SESSION["ID_encuesta"] = $data["ID_encuesta"];
         }
-    
+        ?>
+        <form action="procesa_crear.php" method="GET">
+            <input type="submit" value="Siguiente">
+        </form>
+<?php
 }else{
     header("Location: perfil.php");
 }

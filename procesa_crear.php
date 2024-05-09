@@ -1,12 +1,12 @@
 <?php
 session_start();
 if(isset($_SESSION["admin"])){
-    if($_SERVER['HTTP_REFERER'] == "*/crear_encuesta.php"){
+    if($_SERVER["REQUEST_METHOD"]=="GET"){
         $preg = $_SESSION["preg"];
         ?>
         <form action="" method = "POST">
         <?php
-        for($i=1; $i<=$preg; $i++){
+        for($i=1; $i<$preg; $i++){
             ?>
             Pregunta: <input type="text" name="<?php echo 'txt' . $i;?>"><br>
             Tipo de opciones:
@@ -27,10 +27,11 @@ if(isset($_SESSION["admin"])){
         echo 'SeSaltaElAnterior';
         $bd = mysqli_connect("localhost", "root", "", "varlud");
         $i = intval($_POST["cant"]);
-        for($h=1; $h<=$i; $h++){
+        $id = $_SESSION["ID_encuesta"];
+        for($h=1; $h<$i; $h++){
             $txt = $_POST["txt" . $h];
             $op = $_POST["op" . $h];
-           
+          mysqli_query($bd, "INSERT INTO preguntas VALUES (DEFAULT, '$id', '$op', '$txt')");
         }
     }
 
