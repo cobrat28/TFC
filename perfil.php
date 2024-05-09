@@ -13,13 +13,13 @@
     $query3=mysqli_query($bd,"SELECT count(ID_respuesta) as 'respuestas' FROM respuestas WHERE DNI='$dni' GROUP BY DNI");
     $query4=mysqli_query($bd,"SELECT count(distinct(ID_respuesta)) as 'encuestas' FROM respuestas WHERE DNI='$dni' GROUP BY ID_encuesta");
     foreach ($query2 as $dato2){
-        $emp=$dato1["nombre"];
+        $emp=$dato2["nombre"];
         }
     foreach ($query3 as $dato3){
         $pre=$dato3["respuestas"];
         }
     foreach ($query4 as $dato4){
-        $enc=$dato34["encuestas"];
+        $enc=$dato4["encuestas"];
         }
     echo "<h1>Hola $nombre, aquí tienes tus datos:</h1><br>";
     echo "Nombre: $nombre <br>";

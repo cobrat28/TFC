@@ -13,6 +13,7 @@
     <body class="fondo" >
         <?php 
             $bd=mysqli_connect("localhost", "root", "", "varlud");
+            //hacer otro if con mysqli_num_rows con un select de si hay algo en la tabla de encuestas, de ahí se procede a lo que toque
             $query1=mysqli_query($bd, "SELECT ID_encuesta FROM encuestas ORDER BY ID_encuesta desc LIMIT 3;");
             $arr = array();
             foreach($query1 as $data){
