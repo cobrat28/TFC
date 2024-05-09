@@ -23,22 +23,18 @@
     <form action="Procesa_modificacion.php" method="POST" class="form">
         <div>
             <label>Nombre:</label><br>
-            <p> <?php echo $nombre ?> </p><br>
             <input type="text" name="nombre" value="<?php echo $nombre ?>">
         </div>
         <div>
             <label>Apellidos:</label><br>
-            <p> <?php echo $ape ?> </p><br>
             <input type="text" name="ape" value="<?php echo $ape ?>">
         </div>
         <div>
             <label>CIF:</label><br>
-            <p> <?php echo $cif ?> </p><br>
             <input type="text" name="cif" value="<?php echo $cif ?>">
         </div>
         <div>
             <label>Correo:</label><br>
-            <p> <?php echo $correo ?> </p><br>
             <input type="text" name="correo" value="<?php echo $correo ?>">
         </div>
         <br>
