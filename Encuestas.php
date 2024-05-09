@@ -4,7 +4,7 @@
 <title>VarLud Analytics</title>
 <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.jpg">
 </head>
-<body>
+<body class="fondo">
 
 <?php
     
