@@ -1,63 +1,39 @@
 <?php
 session_start();
 if(isset($_SESSION["admin"])){
-    $preg = $_SESSION["preg"];
-    ?>
-    <form action="" method = "POST">
-    <?php
-    for($i=1; $i<=$preg; $i++){
+    if($_SERVER['HTTP_REFERER'] == "*/crear_encuesta.php"){
+        $preg = $_SESSION["preg"];
         ?>
-        Pregunta: <input type="text" name="<?php echo 'txt' . $i;?>"><br>
-        Tipo de opciones:
-        <select id="<?php echo $i;?>" name="<?php echo 'op' . $i;?>" onchange="opcionesOnChange()">
-            <option value="texto">Caja de texto</option>
-            <option value="radio">Botones radio</option>
-            <option value="check">Botones check</option>
-            <option value="select">Desplegable</option>
-        </select><br>
-        
-        <script>
-            let cant = document.GetElementById("<?php echo $i;?>");
-            function opcionesOnChange() {
-                var opcionSeleccionada = select.value;
-                var contenedor = document.getElementById('contenedor');
-
-                // Limpiar el contenedor antes de añadir nuevas cajas de texto
-                contenedor.innerHTML = '';
-
-                // Añadir cajas de texto según la opción seleccionada
-                if (opcionSeleccionada === 'radio') {
-                    agregarCajasTexto(contenedor, 2); 
-                    <button onclick="caja">Añadir</button>
-                } else if (opcionSeleccionada === 'check') {
-                    agregarCajasTexto(contenedor, 2); 
-                    <button onclick="caja">Añadir</button>
-                } else if (opcionSeleccionada === 'select') {
-                    agregarCajasTexto(contenedor, 2); 
-                    <button onclick="caja">Añadir</button>
-                }
-            }
-            function agregarCajasTexto(contenedor, cantidad) {
-                for (var i = 0; i < cantidad; i++) {
-                    var input = document.createElement('input');
-                    input.type = 'text';
-                   // Añadir la nueva caja de texto al contenedor
-                    contenedor.appendChild(input);
-                }
-            }
-            function caja() {
-                var input = document.createElement('input');
-                input.type = 'text';
-                // Añadir la nueva caja de texto al contenedor
-                contenedor.appendChild(input);
-                }
-        </script>
-    <?php
-    }
-        ?>
-        </form>
+        <form action="" method = "POST">
         <?php
+        for($i=1; $i<=$preg; $i++){
+            ?>
+            Pregunta: <input type="text" name="<?php echo 'txt' . $i;?>"><br>
+            Tipo de opciones:
+            <select id="<?php echo $i;?>" name="<?php echo 'op' . $i;?>">
+                <option value="texto">Caja de texto</option>
+                <option value="radio">Botones radio</option>
+                <option value="check">Botones check</option>
+                <option value="select">Desplegable</option>
+            </select><br>
+        <?php
+        }
+            ?>
+            <input type="hidden" name="cant" value="<?php echo $i;?>">
+            <input type="submit" value="Siguiente">
+            </form>
+            <?php
+    }else{
+        echo 'SeSaltaElAnterior';
+        $bd = mysqli_connect("localhost", "root", "", "varlud");
+        $i = intval($_POST["cant"]);
+        for($h=1; $h<=$i; $h++){
+            $txt = $_POST["txt" . $h];
+            $op = $_POST["op" . $h];
+           
+        }
     }
-else{
+
+}else{
     header("Location: perfil.php");
 }

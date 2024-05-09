@@ -7,11 +7,11 @@ if(isset($_SESSION["admin"])){
     $_SESSION["preg"] = $_POST["preg"];
     $bd = mysqli_connect("localhost", "root", "", "varlud");
     mysqli_query($bd, "INSERT INTO encuestas VALUES (DEFAULT, '$cif', '$nom')");
-    $query = mysqli_query($bd, "SELECT * FROM encuestas WHERE nombre = $nom");
+    $query = mysqli_query($bd, "SELECT * FROM encuestas WHERE nombre = '$nom'");
         foreach ( $query as $data){
             $_SESSION["ID_encuesta"] = $data["ID_encuesta"];
         }
-    header("Location: procesa_crear.php");
+    
 }else{
     header("Location: perfil.php");
 }
