@@ -2,11 +2,10 @@
 session_start();
 if(isset($_SESSION["admin"])){
     $preg = $_SESSION["preg"];
-    $id = $_SESSION["ID_encuesta"];
     ?>
     <form action="" method = "POST">
     <?php
-    for(i=1; i<=$preg; i++){
+    for($i=1; $i<=$preg; $i++){
         ?>
         Pregunta: <input type="text" name="<?php echo 'txt' . $i;?>"><br>
         Tipo de opciones:
@@ -54,11 +53,11 @@ if(isset($_SESSION["admin"])){
                 }
         </script>
     <?php
-    }else{
+    }
         ?>
         </form>
         <?php
     }
-}else{
+else{
     header("Location: perfil.php");
 }

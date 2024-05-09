@@ -24,22 +24,22 @@
         <div>
             <label>Nombre:</label><br>
             <p> <?php echo $nombre ?> </p><br>
-            <input type="text" name="nombre" default="<?php echo $nombre ?>">
+            <input type="text" name="nombre" value="<?php echo $nombre ?>">
         </div>
         <div>
             <label>Apellidos:</label><br>
             <p> <?php echo $ape ?> </p><br>
-            <input type="text" name="ape" default="<?php echo $ape ?>">
+            <input type="text" name="ape" value="<?php echo $ape ?>">
         </div>
         <div>
             <label>CIF:</label><br>
             <p> <?php echo $cif ?> </p><br>
-            <input type="text" name="cif" default="<?php echo $cif ?>">
+            <input type="text" name="cif" value="<?php echo $cif ?>">
         </div>
         <div>
             <label>Correo:</label><br>
             <p> <?php echo $correo ?> </p><br>
-            <input type="text" name="correo" default="<?php echo $correo ?>">
+            <input type="text" name="correo" value="<?php echo $correo ?>">
         </div>
         <br>
         <input type="submit" value="Iniciar sesión">

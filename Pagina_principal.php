@@ -11,6 +11,25 @@
     </head>
 
     <body class="fondo" >
+    <nav class="top">
+            <div class="uno"><a href=Pagina_principal.php><img class="uno_img" src="Imagenes\Logo_solo.jpg" height="50%"></a></div>
+            <div class="dos"><p><a href="https://google.com">Encuestas</a></p></div>
+            <div class="tres"><p><a href="https://google.com">Empresas</a></p></div>
+            <div class="cuatro"><p><a href="perfil.php">Mi Perfil</a></p></div>
+        </nav>
+
+        <article style="display: flex; flex-wrap: wrap; height: 100%; margin-top: 0%;">
+            <div id="izq" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: yellow; border-radius: 25px;"><p><?php echo $nom1; ?></p><br>
+            <br><p><?php echo $emp1; ?></p><br>
+            <br><p><?php echo $pre1; ?></p>
+            </div>
+            <div id="cen" style="margin-left: 10% ; margin-top : 15%; height: 45%; width : 20%; background-color: lightgreen;border-radius: 25px;"><p><?php echo $nom2; ?></p><br>
+            <br><p><?php echo $emp2; ?></p><br>
+            <br><p><?php echo $pre2; ?></p></div>
+            <div id="der" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: #e96a6a;border-radius: 25px;"><p><?php echo $nom3; ?></p><br>
+            <br><p><?php echo $emp3; ?></p><br>
+            <br><p><?php echo $pre3; ?></p></div>
+        </article>
         <?php 
             $bd=mysqli_connect("localhost", "root", "", "varlud");
             //hacer otro if con mysqli_num_rows con un select de si hay algo en la tabla de encuestas, de ahí se procede a lo que toque
@@ -67,25 +86,7 @@
                 $pre3 = $data10["total"];
             }
         ?>
-        <nav class="top">
-            <div class="uno"><a href=Pagina_principal.php><img class="uno_img" src="Imagenes\Logo_solo.jpg" height="50%"></a></div>
-            <div class="dos"><p><a href="https://google.com">Encuestas</a></p></div>
-            <div class="tres"><p><a href="https://google.com">Empresas</a></p></div>
-            <div class="cuatro"><p><a href="perfil.php">Mi Perfil</a></p></div>
-        </nav>
-
-        <article style="display: flex; flex-wrap: wrap; height: 100%; margin-top: 0%;">
-            <div id="izq" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: yellow; border-radius: 25px;"><p><?php echo $nom1; ?></p><br>
-            <br><p><?php echo $emp1; ?></p><br>
-            <br><p><?php echo $pre1; ?></p>
-            </div>
-            <div id="cen" style="margin-left: 10% ; margin-top : 15%; height: 45%; width : 20%; background-color: lightgreen;border-radius: 25px;"><p><?php echo $nom2; ?></p><br>
-            <br><p><?php echo $emp2; ?></p><br>
-            <br><p><?php echo $pre2; ?></p></div>
-            <div id="der" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: #e96a6a;border-radius: 25px;"><p><?php echo $nom3; ?></p><br>
-            <br><p><?php echo $emp3; ?></p><br>
-            <br><p><?php echo $pre3; ?></p></div>
-        </article>
+        
 
     </body>
 
