@@ -6,7 +6,7 @@ if(isset($_SESSION["admin"])){
         ?>
         <form action="" method = "POST">
         <?php
-        for($i=1; $i<$preg; $i++){
+        for($i=1; $i<=$preg; $i++){
             ?>
             Pregunta: <input type="text" name="<?php echo 'txt' . $i;?>"><br>
             Tipo de opciones:
@@ -28,7 +28,7 @@ if(isset($_SESSION["admin"])){
         $bd = mysqli_connect("localhost", "root", "", "varlud");
         $i = intval($_POST["cant"]);
         $id = $_SESSION["ID_encuesta"];
-        for($h=1; $h<$i; $h++){
+        for($h=1; $h<=$i; $h++){
             $txt = $_POST["txt" . $h];
             $op = $_POST["op" . $h];
           mysqli_query($bd, "INSERT INTO preguntas VALUES (DEFAULT, '$id', '$op', '$txt')");
