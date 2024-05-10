@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>VarLud Analytics</title>
-<link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.jpg">
+<link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
 </head>
 <body class="fondo">
 
