@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-04-2024 a las 22:00:56
+-- Tiempo de generación: 10-05-2024 a las 22:36:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -37,7 +37,7 @@ CREATE TABLE `empresas` (
 --
 
 INSERT INTO `empresas` (`CIF`, `nombre`) VALUES
-('Q87654321', '');
+('Q87654321', 'VarLud');
 
 -- --------------------------------------------------------
 
@@ -50,6 +50,25 @@ CREATE TABLE `encuestas` (
   `CIF` varchar(9) NOT NULL,
   `nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `encuestas`
+--
+
+INSERT INTO `encuestas` (`ID_encuesta`, `CIF`, `nombre`) VALUES
+(26, 'Q87654321', 'pito'),
+(27, 'Q87654321', 'Pitoniso'),
+(28, 'Q87654321', 'Pitoniso'),
+(29, 'Q87654321', 'Pitoniso'),
+(30, 'Q87654321', 'Salchipapa'),
+(31, 'Q87654321', 'Salchipapa'),
+(32, 'Q87654321', 'Salchipapa'),
+(33, 'Q87654321', 'Salchipapa'),
+(34, 'Q87654321', 'Salchipaposo'),
+(35, 'Q87654321', 'Best of you'),
+(36, 'Q87654321', 'Pour oublier'),
+(37, 'Q87654321', 'Francisco'),
+(38, 'Q87654321', 'Francisco');
 
 -- --------------------------------------------------------
 
@@ -67,6 +86,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`correo`, `contraseña`) VALUES
+('pito@gmail.com', '$2y$10$aXXup/L0vU0Kc.PRTyMxvu8A8yEL0oZoCmd2rNljIDwmAXVrj1.YK'),
 ('prueba@gmail.com', '$2y$10$vXuoZGngXP9w5RTa3Iba8e0oQN6ATgJnMiYY9Z0zcaMvtIozOdO7a');
 
 -- --------------------------------------------------------
@@ -118,6 +138,17 @@ CREATE TABLE `preguntas` (
   `texto` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `preguntas`
+--
+
+INSERT INTO `preguntas` (`ID_pregunta`, `ID_encuesta`, `tipo`, `texto`) VALUES
+(3, 34, 'rad', '¿Tetas o culo?'),
+(5, 35, 'rad', '¿Tetas o culo?'),
+(8, 36, 'rad', '¿Tetas o culo?'),
+(16, 37, 'rad', 'Que te diga una pregunta?'),
+(17, 38, 'rad', 'aaaaaaa');
+
 -- --------------------------------------------------------
 
 --
@@ -153,7 +184,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`nombre`, `apellidos`, `fecha_nac`, `correo`, `DNI`, `CIF`, `admin`) VALUES
-('Francisco', 'vargas de gracia', '2024-04-01', 'prueba@gmail.com', '12345678Q', 'Q87654321', 1);
+('Francisco', 'Vargas', '2024-04-01', 'prueba@gmail.com', '12345678Q', 'Q87654321', 1);
 
 --
 -- Índices para tablas volcadas
@@ -170,7 +201,7 @@ ALTER TABLE `empresas`
 --
 ALTER TABLE `encuestas`
   ADD PRIMARY KEY (`ID_encuesta`),
-  ADD UNIQUE KEY `CIF` (`CIF`);
+  ADD KEY `CIF` (`CIF`) USING BTREE;
 
 --
 -- Indices de la tabla `login`
@@ -231,13 +262,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  MODIFY `ID_encuesta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_encuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `ID_pregunta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_pregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas
