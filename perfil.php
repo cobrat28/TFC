@@ -49,7 +49,7 @@
     </div>
     <?php
 } else{
-    header("Location: Login.php");
+    header("Location: login.html");
  }
  ?>
 </body>
