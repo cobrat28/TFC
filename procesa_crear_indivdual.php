@@ -5,11 +5,12 @@ if(isset($_SESSION["admin"])){
         $preg = $_SESSION["preg"];
         $cont = $_SESSION["cont"];
         if($cont <= $preg){
+            //revisar action y method
             ?>
             <form action="" method = "POST">
             Pregunta: <input type="text" name="txt"><br>
             Tipo de opciones:
-            <select name="opcion">
+            <select name="tipo">
                 <option value="texto">Caja de texto</option>
                 <option value="radio">Botones radio</option>
                 <option value="check">Botones check</option>

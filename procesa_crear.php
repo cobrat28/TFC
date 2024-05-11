@@ -24,15 +24,25 @@ if(isset($_SESSION["admin"])){
             </form>
             <?php
     }else{
-        echo 'SeSaltaElAnterior';
         $bd = mysqli_connect("localhost", "root", "", "varlud");
-        $i = intval($_POST["cant"]);
         $id = $_SESSION["ID_encuesta"];
-        for($h=1; $h<=$i; $h++){
-            $txt = $_POST["txt" . $h];
-            $op = $_POST["op" . $h];
-          mysqli_query($bd, "INSERT INTO preguntas VALUES (DEFAULT, '$id', '$op', '$txt')");
+        $preg = $_SESSION["preg"];
+        $sql = "INSERT INTO preguntas VALUES ";
+        for($i=1; $i<=$preg; $i++){
+            $txt = $_POST["txt" . $i];
+            $op = $_POST["op" . $i];
+
+            $values = "(DEFAULT, '$id', '$op', '$txt')";
+            if($i != $preg){
+                $values = $values . ", ";
+            }
+            $sql = $sql . $values;
+
+            //echo("<script>console.log('PHP: " . $txt . " , " . $op . " , " . $i ."');</script>");
         }
+        $sql = $sql . ";";
+        //echo("<script>console.log('BD: " . $sql ."');</script>");
+        mysqli_query($bd, $sql);
     }
 
 }else{
