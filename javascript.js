@@ -15,8 +15,8 @@ function generar_opcion(value, id, i) {
         case 'radio':
             html += "<p>Hola mundo radio</p>";
             html += "<input type=text id=valor >";
-            html += "<button onclick=subir(valor.value, " + id + ")>Subir</button>";
             sql = "INSERT INTO op_radio VALUES ";
+            html += "<button onclick=subir(valor.value, " + id + ")>Subir</button>";
             break;
 
         case 'check':
@@ -34,7 +34,8 @@ function generar_opcion(value, id, i) {
 function subir(value, id){
     sql += "(DEFAULT, '" + id +"', '" + value + "')";
     console.log("SQL: " + sql);
-    
-    document.getElementById(insert).insertAdjacentHTML("afterend", sql);
+    bd = "mysqli_connect('localhost', 'root', '', 'varlud');"
+    query = "mysqli_query(" + bd + ", " + sql + ");";
+    document.getElementById(insert).insertAdjacentHTML("afterend", query);
    
 }
