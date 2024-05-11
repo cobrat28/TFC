@@ -1,3 +1,4 @@
+<script type="text/javascript" src="javascript.js"></script>
 <?php
 session_start();
 if(isset($_SESSION["admin"])){
@@ -10,13 +11,15 @@ if(isset($_SESSION["admin"])){
             ?>
             Pregunta: <input type="text" name="<?php echo 'txt' . $i;?>"><br>
             Tipo de opciones:
-            <select id="<?php echo $i;?>" name="<?php echo 'op' . $i;?>">
-                <option value="texto">Caja de texto</option>
-                <option value="radio">Botones radio</option>
-                <option value="check">Botones check</option>
-                <option value="select">Desplegable</option>
+            <select id="<?php echo $i;?>" name="<?php echo 'op' . $i;?>" onchange="generar_opcion(this.value, this.id, '$i')">
+                <option id="texto" value="texto">Caja de texto</option>
+                <option id="radio" value="radio">Botones radio</option>
+                <option id="check" value="check">Botones check</option>
+                <option id="select" value="select">Desplegable</option>
             </select><br>
+        
         <?php
+        //como pasar un parámetro php a función de js
         }
             ?>
             <input type="hidden" name="cant" value="<?php echo $i;?>">
