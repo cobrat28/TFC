@@ -6,7 +6,7 @@ function generar_opcion(value, id, i) {
         document.getElementById(idHtml).remove();
     }
 
-    let html = "<div id= "+ idHtml + ">";
+    let html = "<div id= "+ idHtml +" >";
     switch (value) {
         case 'texto':
             html += "<p>Hola mundo texto</p>";
@@ -14,6 +14,9 @@ function generar_opcion(value, id, i) {
 
         case 'radio':
             html += "<p>Hola mundo radio</p>";
+            html += "<input type=text id=valor >";
+            html += "<button onclick=subir(valor.value, " + id + ")>Subir</button>";
+            sql = "INSERT INTO op_radio VALUES ";
             break;
 
         case 'check':
@@ -26,4 +29,12 @@ function generar_opcion(value, id, i) {
     }
     html += "</div>"
     document.getElementById(id).insertAdjacentHTML("afterend", html);
+}
+
+function subir(value, id){
+    sql += "(DEFAULT, '" + id +"', '" + value + "')";
+    console.log("SQL: " + sql);
+    
+    document.getElementById(insert).insertAdjacentHTML("afterend", sql);
+   
 }
