@@ -14,9 +14,9 @@ function generar_opcion(value, id, i) {
 
         case 'radio':
             html += "<p>Hola mundo radio</p>";
-            html += "<input type=text id=valor >";
+            html += "<input type=text id=opcion >";
             sql = "INSERT INTO op_radio VALUES ";
-            html += "<button onclick=subir(valor.value, " + id + ")>Subir</button>";
+            html += "<button onclick=subir()>Subir</button>";
             break;
 
         case 'check':
@@ -31,11 +31,16 @@ function generar_opcion(value, id, i) {
     document.getElementById(id).insertAdjacentHTML("afterend", html);
 }
 
-function subir(value, id){
-    sql += "(DEFAULT, '" + id +"', '" + value + "')";
+function subir(){
+    let input = document.getElementById("opcion");
+    let valor = input.opcion.trim();
+    if (valor.length === 0){
+        alert("No se ha proporcionado ningún valor");
+    }else{
+    sql += "(DEFAULT, '" + id +"', '" + valor + "')";
     console.log("SQL: " + sql);
     bd = "mysqli_connect('localhost', 'root', '', 'varlud');"
-    query = "mysqli_query(" + bd + ", " + sql + ");";
-    document.getElementById(insert).insertAdjacentHTML("afterend", query);
-   
+    //query = "mysqli_query(" + bd + ", " + sql + ");";
+    //document.getElementById(insert).insertAdjacentHTML("afterend", query);
+    }
 }
