@@ -238,6 +238,36 @@
 .body_print {
     display: grid;
     place-items: center;
+    align-items: start;
+    height: 75vh;
+    margin: 0;
+    background-image: url("../Imagenes/Fondo.jpg");
+    background-size: cover;
+}
+
+.body_reg {
+    display: grid;
+    place-items: center;
+    align-items: start;
+    height: 100vh;
+    margin: 0;
+    background-image: url("../Imagenes/Fondo.jpg");
+    background-size: cover;
+}
+
+.body_mod {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url("../Imagenes/Fondo.jpg");
+    background-size: cover;
+    align-content: center;
+}
+
+.body_ses {
+    display: grid;
+    place-items: center;
     height: 100vh;
     margin: 0;
     background-image: url("../Imagenes/Fondo.jpg");
@@ -258,6 +288,23 @@
     border: 1px solid black;
     border-radius: 5px;
     background-color: cornflowerblue;
+}
+
+.form3 {
+    text-align: center;
+    width: 100%;
+    margin-top: 0;
+    background-color: cornflowerblue; 
+    padding: 20px; 
+    box-sizing: border-box;
+}
+
+.form4 {
+    text-align: center;
+    padding: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightgray;
 }
 
 .form div {

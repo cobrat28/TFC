@@ -6,7 +6,7 @@
     <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
     <link rel="stylesheet" href="CSS\estilos.css">
 </head>
-<body class="body_print">
+<body class="body_mod">
 <?php
  session_start();
  if(isset($_SESSION["DNI"])){
@@ -20,7 +20,7 @@
         $correo=$dato1["correo"];
         }
 ?>
-    <form action="Procesa_modificacion.php" method="POST" class="form">
+    <form action="Procesa_modificacion.php" method="POST" class="form4">
         <div>
             <label>Nombre:</label><br>
             <input type="text" name="nombre" value="<?php echo $nombre ?>">

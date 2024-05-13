@@ -6,14 +6,14 @@
     <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
     <link rel="stylesheet" href="CSS\estilos.css">
 </head>
-<body class="body_print">
+<body class="body_reg">
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
     ?>
     
-    <h1 class="form2">Bienvenido a VarLud Analytics.</h1>
+    <h1 class="form3">Bienvenido a VarLud Analytics.</h1>
     <!--formulario con todos los datos para la tabla, se vendrá al registro por GET, y al enviar el formulario, ya se énviará a la página principal-->
     <form action="" method="POST" class="form">
         <h2>Por favor introduce tus datos</h2>
