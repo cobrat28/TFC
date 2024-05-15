@@ -18,11 +18,17 @@ if(isset($_SESSION["admin"])){
     $_SESSION["cont"] = 1;
     $bd = mysqli_connect("localhost", "root", "", "varlud");
     mysqli_query($bd, "INSERT INTO encuestas VALUES (DEFAULT, '$cif', '$nom')");
-    $query = mysqli_query($bd, "SELECT * FROM encuestas WHERE nombre = '$nom'");
-        foreach ( $query as $data){
-            $_SESSION["ID_encuesta"] = $data["ID_encuesta"];
+    $query = mysqli_query($bd, "SELECT MAX(ID_encuesta) as 'id' FROM encuestas");
+        foreach ($query as $data){
+            $_SESSION["ID_encuesta"] = $data["id"];
         }
+        $id_enc = $_SESSION["ID_encuesta"];
+    for($i=0; $i<$preg; $i++){
+        mysqli_query($bd, "INSERT INTO preguntas VALUES (DEFAULT, $id_enc , NULL, NULL)");
+    }
+        
         echo"<h1 class='form3'>Vamos a procesar tu encuesta " . $nom . " con " . $preg . " preguntas, por favor pulsa el botón de continuar.</h1>";
+
         ?>
         <form action="procesa_crear.php" method="GET" class="form4">
             <input type="submit" value="Contiuar">

@@ -1,6 +1,6 @@
-function generar_opcion(value, id, i) {
+function generar_opcion(value, iden, i) {
     console.log("linea2");
-    console.log(value + ":" + id + ":" + i);
+    console.log(value + ":" + iden + ":" + i);
     const idHtml = "html" + i;
 
     if (document.getElementById(idHtml) != null) {
@@ -20,7 +20,8 @@ function generar_opcion(value, id, i) {
             html += "<input type=text id=opcion >";
             op = "op_radio";
             console.log(op);
-            html += "<input type=\"button\" onclick=\"subir(op_radio)\" value=\"Subir\">";
+            console.log(iden);
+            html += "<input type=\"button\" onclick=\"subir(op, "+ iden +")\" value=\"Subir\">";
             break;
 
         case 'check':
@@ -32,26 +33,28 @@ function generar_opcion(value, id, i) {
             break;
     }
     html += "</div>"
-    document.getElementById(id).insertAdjacentHTML("afterend", html);
+    document.getElementById(i).insertAdjacentHTML("afterend", html);
 }
 
-function subir(op) {
+function subir(op, ida) {
     console.log("entrará a subir");
     let input = document.getElementById("opcion").value;
+    console.log(op);
+    console.log(ida);
     if (input.length === 0) {
         alert("No se ha proporcionado ningún valor");
     } else {
-        //nextval aquí
+        //document.getElementById(insert).insertAdjacentHTML("");
         bd = "mysqli_connect('localhost', 'root', '', 'varlud');";
-        sql = "'INSERT INTO ";
-        sql = + op;
-        sql = + " VALUES "
+        sql = "'INSERT INTO " + op + " VALUES ";
+        console.log("SQL3: " + sql);
         prequery = "mysqli_query(" + bd + ", 'SELECT MAX(ID_pregunta) FROM preguntas');";
         prequery++;
-        sql += "(" + prequery + ", " + id + ", " + input + "')";
-        console.log("SQL: " + sql);
-        query = "mysqli_query(" + bd + ", " + sql + ");";
-        //document.getElementById(insert).insertAdjacentHTML("afterend", query);
+        sql += "(DEFAULT,"+ ida +", '" + input +"')'";
+        console.log("SQL5: " + sql);
+        query = "<?php mysqli_query(" + bd + ", " + sql + "); ?>";
+        console.log(query);
+        document.getElementById('insert').insertAdjacentHTML("afterend", query);
     }
     console.log("final ");
 }
