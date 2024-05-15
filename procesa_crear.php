@@ -1,7 +1,7 @@
 <script type="text/Javascript" src="javascript.js"></script>
 <?php
 session_start();
-//if (isset($_SESSION["admin"])) {
+if (isset($_SESSION["admin"])) {
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $preg = $_SESSION["preg"];
 ?>
@@ -47,6 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     mysqli_query($bd, $sql);
     //echo "<div id=insert>";
 }
-//} else {
- //   header("Location: perfil.php");
-//}
+} else {
+    header("Location: perfil.php");
+}

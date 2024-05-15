@@ -19,7 +19,8 @@ function generar_opcion(value, id, i) {
             html += "<p>Hola mundo radio</p>";
             html += "<input type=text id=opcion >";
             op = "op_radio";
-            html += "<input type=\"button\" onclick=\"subir(" + op + ")\" value=\"Subir\">";
+            console.log(op);
+            html += "<input type=\"button\" onclick=\"subir(op_radio)\" value=\"Subir\">";
             break;
 
         case 'check':
@@ -36,19 +37,18 @@ function generar_opcion(value, id, i) {
 
 function subir(op) {
     console.log("entrará a subir");
-    let input = document.getElementById("opcion");
-    let valor = input.opcion.trim();
-    if (valor.length === 0) {
+    let input = document.getElementById("opcion").value;
+    if (input.length === 0) {
         alert("No se ha proporcionado ningún valor");
     } else {
         //nextval aquí
         bd = "mysqli_connect('localhost', 'root', '', 'varlud');";
-        sql= "'INSERT INTO ";
-        sql =+ op;
-        sql =+ "VALUES "
-        prequery = "mysqli_query(" + bd + ", 'SELECT MAX(ID_pregunta) FROM preguntas');" ;
+        sql = "'INSERT INTO ";
+        sql = + op;
+        sql = + " VALUES "
+        prequery = "mysqli_query(" + bd + ", 'SELECT MAX(ID_pregunta) FROM preguntas');";
         prequery++;
-        sql += "(" + prequery +", " + id + ", " + valor + "')";
+        sql += "(" + prequery + ", " + id + ", " + input + "')";
         console.log("SQL: " + sql);
         query = "mysqli_query(" + bd + ", " + sql + ");";
         //document.getElementById(insert).insertAdjacentHTML("afterend", query);
