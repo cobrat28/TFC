@@ -1,35 +1,45 @@
 <?php
 session_start();
-if(isset($_SESSION["admin"])){
+if (isset($_SESSION["admin"])) {
     $bd = mysqli_connect("localhost", "root", "", "varlud");
-    $query = ($bd, "SELECT * FROM preguntas LIMIT 1");
     //where max(ID_pregunta)
-    foreach($query as $data){
-        $id = $data["ID_pregunta"];
-        $tipo = $data["tipo"];
-    }
-    //coger la última pregunta con LIMIT 1
-    if($tipo == "check"){
-        $query2 = ($bd, "SELECT COUNT(ID_opcion) AS 'opciones' FROM op_check WHERE ID_pregunta = $id");
-        foreach($query as $data){
-            $op = $data["opciones"];
-        }
-        if($cant_op <= $op){
-            //action y method por definir, aunque es probable que sea a esta misma página
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        $preg = $_SESSION["preg"];
+        $id = $_SESSION["ID_encuesta"];
+        for ($i = 0; $i < $preg; $i++) {
+            $txt = $_GET["txt" . $i];
+            $op = $_GET["op" . $i];
+            $cant = $_GET["cant_op" . $i];
+            echo "$txt <br>";
+            echo "$op <br>";
+            echo "$cant <br>";
+            //mysqli_query($bd, "INSERT INTO preguntas VALUES (DEFAULT, $id, $op, $txt)");
             ?>
-            <form action="" method="GET">
-                Opción: <input type="text" name="op_chk">
-                <input type="submit" value="Añadir">
-        </form>
+            <form action="" method="POST">
+                <p><?php echo $txt ?></p>
+                <?php 
+                for ($j = 0; $j < $cant; $j++) {
+                    ?>
+                    <?php echo "$txt . $j"; ?>
+                    <input type='text'name= "<?php echo $txt . $j; ?>">
+                    <?php
+                    }
+
+        } ?>
+                <input type="submit" value="Siguiente">
+                </form>
         <?php
-        }else{}
-    }elseif($tipo = radio){
+    } else {
+        $query = mysqli_query($bd, "SELECT MAX(ID_pregunta) FROM preguntas");
+        foreach ($query as $data) {
+            $id_preg = $data["MAX(ID_pregunta)"];
+            echo "$id_preg <br>";
+            for($i=0;$i<0;$i++){
+                $txt = "txt" . $i;
+                for(){
 
-    }elseif($tipo = select){
-
-    }else{
-
+                }
+            }
+        }
     }
-    if($_SERVER["REQUEST_METHOD"]=="GET"){
-         
-        if($)
+}

@@ -30,7 +30,6 @@ if (isset($_SESSION["admin"])) {
             }
             $h = 0;
             for ($i = $min; $i <= $max; $i++) {
-
             ?>
                 Pregunta: <input type="text" name="<?php echo 'txt' . $h; ?>"><br>
                 Tipo de opciones:
@@ -40,6 +39,7 @@ if (isset($_SESSION["admin"])) {
                     <option id="check" value="check">Botones check</option>
                     <option id="select" value="select">Desplegable</option>
                 </select><br>
+                <div id="$h"></div>
             <?php
                 $h++;
             }

@@ -30,7 +30,7 @@ if(isset($_SESSION["admin"])){
         echo"<h1 class='form3'>Vamos a procesar tu encuesta " . $nom . " con " . $preg . " preguntas, por favor pulsa el botón de continuar.</h1>";
 
         ?>
-        <form action="procesa_crear.php" method="GET" class="form4">
+        <form action="procesa_crear_individual.php" method="GET" class="form4">
             <input type="submit" value="Contiuar">
         </form>
 <?php
