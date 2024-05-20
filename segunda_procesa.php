@@ -5,6 +5,8 @@ if (isset($_SESSION["admin"])) {
     //where max(ID_pregunta)
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $preg = $_SESSION["preg"];
+        $txt = 0;
+        $op = 0;
         $id = $_SESSION["ID_encuesta"];
         for ($i = 0; $i < $preg; $i++) {
             $txt = $_GET["txt" . $i];
@@ -13,14 +15,17 @@ if (isset($_SESSION["admin"])) {
             echo "$txt <br>";
             echo "$op <br>";
             echo "$cant <br>";
+            echo "$id <br>";
             //mysqli_query($bd, "INSERT INTO preguntas VALUES (DEFAULT, $id, $op, $txt)");
             ?>
             <form action="" method="POST">
                 <p><?php echo $txt ?></p>
+                <input type="hidden" name="<?php echo 'preg' . $i; ?>" value="<?php echo $txt ?>">
+                <input type="hidden" name="<?php echo 'cant' . $i; ?>" value="<?php echo $cant ?>">
                 <?php 
                 for ($j = 0; $j < $cant; $j++) {
                     ?>
-                    <?php echo "$txt . $j"; ?>
+                    <?php echo $txt . $j . "<br>"; ?>
                     <input type='text'name= "<?php echo $txt . $j; ?>">
                     <?php
                     }
@@ -30,16 +35,23 @@ if (isset($_SESSION["admin"])) {
                 </form>
         <?php
     } else {
-        $query = mysqli_query($bd, "SELECT MAX(ID_pregunta) FROM preguntas");
-        foreach ($query as $data) {
-            $id_preg = $data["MAX(ID_pregunta)"];
-            echo "$id_preg <br>";
-            for($i=0;$i<0;$i++){
-                $txt = "txt" . $i;
-                for(){
+        //nombrar el numero de preguntas de cada una, para poder hacer el bucle
+        //añadir un IF para las que no tengan opciones (texto)
+        $num_preg = $_SESSION["preg"];
+        echo $num_preg . "<br>";
+        for($i=0;$i<$num_preg;$i++){
+            //conseguimos solo que llegue el primer valor
+            $preg = $_POST["preg" . $i];
+            $cant = $_POST["cant" . $i];
+            echo $preg . "<br>";
+            echo $cant . "<br>";
+            //$query = mysqli_query($bd, "SELECT ID_pregunta FROM preguntas WHERE nombre = $preg");
+            $valor = $_POST[$preg . $i];
+            echo $valor;
+            //mysqli_query($bd, "INSERT INTO $tabla_opciones VALUES ()")
+            //for(){
 
-                }
+            //}
             }
         }
     }
-}
