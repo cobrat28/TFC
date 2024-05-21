@@ -24,30 +24,43 @@ if (isset($_SESSION["admin"])) {
                 <input type="hidden" name="<?php echo 'cant' . $i; ?>" value="<?php echo $cant ?>">
                 <?php 
                 for ($j = 0; $j < $cant; $j++) {
+                    $txt_sin = str_replace(' ', '', trim($txt . $j));
+                    echo "<br>";
+                    echo $txt . $j; 
+                    echo "<br>";
+                    echo $txt_sin; 
                     ?>
-                    <?php echo $txt . $j . "<br>"; ?>
-                    <input type='text'name= "<?php echo $txt . $j; ?>">
+                    <input type='text'name= "<?php echo $txt_sin; ?>">
+                    <br>
                     <?php
                     }
-
-        } ?>
+                    
+                } ?>
                 <input type="submit" value="Siguiente">
-                </form>
-        <?php
+            </form>
+            <?php
     } else {
         //nombrar el numero de preguntas de cada una, para poder hacer el bucle
         //añadir un IF para las que no tengan opciones (texto)
         $num_preg = $_SESSION["preg"];
-        echo $num_preg . "<br>";
+        //echo $num_preg . "<br>";
         for($i=0;$i<$num_preg;$i++){
-            //conseguimos solo que llegue el primer valor
-            $preg = $_POST["preg" . $i];
+            //Solo llegan cuando no hay espacios de por medio, podemos porbar a crear una variable con el contenido de la pregunta sin espacios
+            $preg = str_replace(' ', '', trim($_POST["preg" . $i]));
             $cant = $_POST["cant" . $i];
-            echo $preg . "<br>";
-            echo $cant . "<br>";
+            //echo $cant . "<br>";
+            if($cant != 0){
+                echo $preg . "<br>";
+                //echo $cant . "<br>";
+                for($j=0;$j < $cant; $j++){
+                    $txt = $_POST[$preg . $j];
+                    echo $txt;
+                }
+            }else{
+                echo $preg . "<br>";
+
+            }
             //$query = mysqli_query($bd, "SELECT ID_pregunta FROM preguntas WHERE nombre = $preg");
-            $valor = $_POST[$preg . $i];
-            echo $valor;
             //mysqli_query($bd, "INSERT INTO $tabla_opciones VALUES ()")
             //for(){
 
