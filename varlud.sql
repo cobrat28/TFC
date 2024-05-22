@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2024 a las 22:36:28
+-- Tiempo de generación: 22-05-2024 a las 23:40:13
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -51,25 +51,6 @@ CREATE TABLE `encuestas` (
   `nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `encuestas`
---
-
-INSERT INTO `encuestas` (`ID_encuesta`, `CIF`, `nombre`) VALUES
-(26, 'Q87654321', 'pito'),
-(27, 'Q87654321', 'Pitoniso'),
-(28, 'Q87654321', 'Pitoniso'),
-(29, 'Q87654321', 'Pitoniso'),
-(30, 'Q87654321', 'Salchipapa'),
-(31, 'Q87654321', 'Salchipapa'),
-(32, 'Q87654321', 'Salchipapa'),
-(33, 'Q87654321', 'Salchipapa'),
-(34, 'Q87654321', 'Salchipaposo'),
-(35, 'Q87654321', 'Best of you'),
-(36, 'Q87654321', 'Pour oublier'),
-(37, 'Q87654321', 'Francisco'),
-(38, 'Q87654321', 'Francisco');
-
 -- --------------------------------------------------------
 
 --
@@ -96,7 +77,7 @@ INSERT INTO `login` (`correo`, `contraseña`) VALUES
 --
 
 CREATE TABLE `op_check` (
-  `ID_op_chk` varchar(50) NOT NULL,
+  `ID_op_chk` int(11) NOT NULL,
   `ID_pregunta` int(11) NOT NULL,
   `valor` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -108,7 +89,7 @@ CREATE TABLE `op_check` (
 --
 
 CREATE TABLE `op_radio` (
-  `ID_op_rad` varchar(50) NOT NULL,
+  `ID_op_rad` int(50) NOT NULL,
   `ID_pregunta` int(11) NOT NULL,
   `valor` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -120,7 +101,7 @@ CREATE TABLE `op_radio` (
 --
 
 CREATE TABLE `op_select` (
-  `ID_op_sel` varchar(50) NOT NULL,
+  `ID_op_sel` int(11) NOT NULL,
   `ID_pregunta` int(11) NOT NULL,
   `valor` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -134,20 +115,9 @@ CREATE TABLE `op_select` (
 CREATE TABLE `preguntas` (
   `ID_pregunta` int(11) NOT NULL,
   `ID_encuesta` int(11) NOT NULL,
-  `tipo` varchar(3) NOT NULL DEFAULT 'txt',
+  `tipo` varchar(3) NOT NULL,
   `texto` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `preguntas`
---
-
-INSERT INTO `preguntas` (`ID_pregunta`, `ID_encuesta`, `tipo`, `texto`) VALUES
-(3, 34, 'rad', '¿Tetas o culo?'),
-(5, 35, 'rad', '¿Tetas o culo?'),
-(8, 36, 'rad', '¿Tetas o culo?'),
-(16, 37, 'rad', 'Que te diga una pregunta?'),
-(17, 38, 'rad', 'aaaaaaa');
 
 -- --------------------------------------------------------
 
@@ -214,28 +184,28 @@ ALTER TABLE `login`
 --
 ALTER TABLE `op_check`
   ADD PRIMARY KEY (`ID_op_chk`),
-  ADD UNIQUE KEY `ID_pregunta` (`ID_pregunta`);
+  ADD KEY `ID_pregunta` (`ID_pregunta`) USING BTREE;
 
 --
 -- Indices de la tabla `op_radio`
 --
 ALTER TABLE `op_radio`
   ADD PRIMARY KEY (`ID_op_rad`),
-  ADD UNIQUE KEY `ID_pregunta` (`ID_pregunta`);
+  ADD KEY `ID_pregunta` (`ID_pregunta`) USING BTREE;
 
 --
 -- Indices de la tabla `op_select`
 --
 ALTER TABLE `op_select`
   ADD PRIMARY KEY (`ID_op_sel`),
-  ADD UNIQUE KEY `ID_pregunta` (`ID_pregunta`);
+  ADD KEY `ID_pregunta` (`ID_pregunta`) USING BTREE;
 
 --
 -- Indices de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  ADD PRIMARY KEY (`ID_pregunta`),
-  ADD UNIQUE KEY `ID_encuesta` (`ID_encuesta`);
+  ADD PRIMARY KEY (`ID_pregunta`) USING BTREE,
+  ADD KEY `ID_encuesta` (`ID_encuesta`) USING BTREE;
 
 --
 -- Indices de la tabla `respuestas`
@@ -262,13 +232,31 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  MODIFY `ID_encuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `ID_encuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+
+--
+-- AUTO_INCREMENT de la tabla `op_check`
+--
+ALTER TABLE `op_check`
+  MODIFY `ID_op_chk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `op_radio`
+--
+ALTER TABLE `op_radio`
+  MODIFY `ID_op_rad` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
+-- AUTO_INCREMENT de la tabla `op_select`
+--
+ALTER TABLE `op_select`
+  MODIFY `ID_op_sel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `ID_pregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID_pregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=326;
 
 --
 -- Restricciones para tablas volcadas
