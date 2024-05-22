@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>VarLud Analytics</title>
+    <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
+    <link rel="stylesheet" href="CSS\estilos.css">
+</head>
+<body class="body_ses">
 <?php
 session_start();
 if(isset($_SESSION["admin"])){
@@ -21,15 +30,15 @@ if(isset($_SESSION["admin"])){
             <?php
         }
         ?>
+        
         <input type="submit" value="Siguiente">
     </form>
     <?php
-    }else{
-        //$bd = mysqli_connect("localhost", "root", "", "varlud");
-        //$id = $_SESSION["ID_encuesta"];
-        //mysqli_query($bd, "INSERT INTO preguntas VALUES (DEFAULT, '$id', '$op', '$txt')");
     }
 
 }else{
     header("Location: perfil.php");
 }
+?>
+</body>
+</html>
