@@ -17,7 +17,7 @@ if(isset($_SESSION["admin"])){
         for($i=0; $i < $preg; $i++){
             //revisar action y method
             ?>
-            <form action="procesa_crear_dos.php" method = "GET">
+            <form action="procesa_crear_dos.php" method = "GET" class="form4">
             Pregunta: <input type="text" name="<?php echo 'txt' . $i; ?>"><br>
                 Tipo de opciones:
                 <select id="<?php echo $h; ?>" name="<?php echo 'op' . $i; ?>">
@@ -26,7 +26,7 @@ if(isset($_SESSION["admin"])){
                     <option id="check" value="check">Botones check</option>
                     <option id="select" value="select">Desplegable</option>
                 </select><br>
-            Cantidad de opciones (si procede): <input type="number" name="<?php echo 'cant_op' . $i; ?>"><br>
+            Cantidad de opciones (si procede): <input type="number" name="<?php echo 'cant_op' . $i; ?>"><br><br>
             <?php
         }
         ?>

@@ -26,7 +26,7 @@ if (isset($_SESSION["admin"])) {
             mysqli_query($bd, $pru);
             //el echo de abajo, <p><?php echo $txt </p>, es para ver la pregunta
 ?>
-            <form action="" method="POST">
+            <form action="" method="POST" class="form4">
                 <p><?php echo $txt ?></p>
                 <input type="hidden" name="<?php echo 'preg' . $i; ?>" value="<?php echo $txt ?>">
                 <input type="hidden" name="<?php echo 'cant' . $i; ?>" value="<?php echo $cant ?>">
@@ -50,7 +50,8 @@ if (isset($_SESSION["admin"])) {
     } else {
         //nombrar el numero de preguntas de cada una, para poder hacer el bucle
         $num_preg = $_SESSION["preg"];
-        echo "Encuesta creada con éxito, puede verla en el apartado de Encuestas en el menú principal <br>";
+        echo "<p class='form3'>Encuesta creada con éxito, puede verla en el apartado de Encuestas en el menú principal.</p> <br>";
+        echo "<div class='form2'>";
         for ($i = 0; $i < $num_preg; $i++) {
             //traemos el nombre de la pregunta, para llamar a los valores (name)
             $preg = $_POST["preg" . $i];
@@ -98,6 +99,7 @@ if (isset($_SESSION["admin"])) {
             //echo $preg . "<br>";
         }
         ?>
+            </div>
             <form action="Pagina_principal.php" method="POST">
                 <input type="submit" value="Volver a la página principal.">
             </form>
