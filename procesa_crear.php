@@ -4,7 +4,29 @@
     <meta charset="UTF-8">
     <title>VarLud Analytics</title>
     <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
-    <link rel="stylesheet" href="CSS\estilos.css">
+    <link rel="stylesheet" href="CSS/estilos.css">
+    <script>
+        function toggleCantidadOpciones(selectElement, index) {
+            const cantidadOpcionesInput = document.getElementById('cant_op_' + index);
+            if (selectElement.value === "texto") {
+                cantidadOpcionesInput.disabled = true;
+                cantidadOpcionesInput.value = "";
+            } else {
+                cantidadOpcionesInput.disabled = false;
+            }
+        }
+
+        // Función para deshabilitar inicialmente si es necesario
+        function initializeCantidadOpciones() {
+            const selects = document.querySelectorAll('select[name^="op"]');
+            selects.forEach((select, index) => {
+                toggleCantidadOpciones(select, index);
+            });
+        }
+
+        // Ejecutar al cargar la página
+        window.onload = initializeCantidadOpciones;
+    </script>
 </head>
 <body class="body_ses">
 <?php
@@ -15,18 +37,17 @@ if(isset($_SESSION["admin"])){
         $bd = mysqli_connect("localhost", "root", "", "varlud");
         $id = $_SESSION["ID_encuesta"];
         for($i=0; $i < $preg; $i++){
-            //revisar action y method
             ?>
-            <form action="procesa_crear_dos.php" method = "GET" class="form4">
-            Pregunta: <input type="text" name="<?php echo 'txt' . $i; ?>"><br>
+            <form action="procesa_crear_dos.php" method="GET" class="form4">
+                Pregunta: <input type="text" name="<?php echo 'txt' . $i; ?>"><br>
                 Tipo de opciones:
-                <select id="<?php echo $h; ?>" name="<?php echo 'op' . $i; ?>">
-                    <option id="texto" value="texto">Caja de texto</option>
-                    <option id="radio" value="radio">Botones radio</option>
-                    <option id="check" value="check">Botones check</option>
-                    <option id="select" value="select">Desplegable</option>
+                <select name="<?php echo 'op' . $i; ?>" onchange="toggleCantidadOpciones(this, <?php echo $i; ?>)">
+                    <option value="texto">Caja de texto</option>
+                    <option value="radio">Botones radio</option>
+                    <option value="check">Botones check</option>
+                    <option value="select">Desplegable</option>
                 </select><br>
-            Cantidad de opciones (si procede): <input type="number" name="<?php echo 'cant_op' . $i; ?>"><br><br>
+                Cantidad de opciones (si procede): <input type="number" id="cant_op_<?php echo $i; ?>" name="<?php echo 'cant_op' . $i; ?>"><br><br>
             <?php
         }
         ?>
