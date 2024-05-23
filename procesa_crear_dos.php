@@ -6,7 +6,7 @@
     <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
     <link rel="stylesheet" href="CSS\estilos.css">
 </head>
-<body class="body_ses">
+<body class="body_print">
 <?php
 session_start();
 if (isset($_SESSION["admin"])) {
@@ -50,8 +50,8 @@ if (isset($_SESSION["admin"])) {
     } else {
         //nombrar el numero de preguntas de cada una, para poder hacer el bucle
         $num_preg = $_SESSION["preg"];
-        echo "<p class='form3'>Encuesta creada con éxito, puede verla en el apartado de Encuestas en el menú principal.</p> <br>";
-        echo "<div class='form2'>";
+        echo "<h2 class='form3'>Encuesta creada con éxito, puede verla en el apartado de Encuestas en el menú principal.</h2> <br>";
+        echo "<div class='form5'>";
         for ($i = 0; $i < $num_preg; $i++) {
             //traemos el nombre de la pregunta, para llamar a los valores (name)
             $preg = $_POST["preg" . $i];
@@ -99,10 +99,11 @@ if (isset($_SESSION["admin"])) {
             //echo $preg . "<br>";
         }
         ?>
-            </div>
-            <form action="Pagina_principal.php" method="POST">
-                <input type="submit" value="Volver a la página principal.">
+         <form action="Pagina_principal.php" method="POST">
+                <br><input type="submit" value="Volver a la página principal.">
             </form>
+            </div>
+           
     <?php
     }
 }
