@@ -23,9 +23,7 @@ if(isset($_SESSION["admin"])){
             $_SESSION["ID_encuesta"] = $data["id"];
         }
         $id_enc = $_SESSION["ID_encuesta"];
-    for($i=0; $i<$preg; $i++){
-        mysqli_query($bd, "INSERT INTO preguntas VALUES (DEFAULT, $id_enc , NULL, NULL)");
-    }
+    
         
         echo"<h1 class='form3'>Vamos a procesar tu encuesta " . $nom . " con " . $preg . " preguntas, por favor pulsa el botón de continuar.</h1>";
 
