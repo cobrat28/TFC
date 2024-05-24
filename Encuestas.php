@@ -30,7 +30,7 @@
             <p>Preguntas: <?php echo $cant; ?></p><br>
             <p>Empresa: <?php echo $emp; ?></p><br>
             <form action="responder.php">
-                <input type="hidden" name="id_enc" value="$id">
+                <input type="hidden" name="id_enc" value="<?php echo $id; ?>">
                 <input type="submit" value="Responder">
             </form>
         </div>

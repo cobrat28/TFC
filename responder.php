@@ -6,11 +6,11 @@ if (isset($_SESSION["DNI"])) {
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo "<form action='' method='POST'>";
         $id_enc = $_GET["id_enc"];
-        $query = mysqli_query($bd, "SELECT * FROM encuestas WHERE ID_encuesta = '$id_enc'");
+        $query = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_encuesta = $id_enc");
         //este foreach es el principal, en el que vamos a sacar los id de preguntas, si es necesario se hará count para las correspondientes, si salen más o menos preguntas de la que son.
         foreach ($query as $preg) {
             $id_preg = $preg["ID_pregunta"];
-            $query2 = mysqli_query($bd, "SELECT COUNT(ID_pregunta) as 'cantidad' FROM preguntas GROUP BY ID_encuesta WHERE ID_encuesta = '$id_enc'");
+            $query2 = mysqli_query($bd, "SELECT COUNT(ID_pregunta) as 'cantidad' FROM preguntas WHERE ID_encuesta = $id_enc GROUP BY ID_encuesta");
             foreach ($query2 as $data) {
                 $cant = $data["cantidad"];
             }
@@ -22,37 +22,40 @@ if (isset($_SESSION["DNI"])) {
                     $texto = $dato["texto"];
                 }
                 echo "<h2> Pregunta: " . $texto . "</h2><br>";
-                if ($tipo == 'rad') {
+                if ($tipo == "rad") {
                     echo "";
                     $query4 = mysqli_query($bd, "SELECT * FROM op_radio WHERE ID_pregunta = '$id_preg'");
                     foreach ($query4 as $data4) {
                         $opcion = $data4["valor"];
-                        echo "<input type='radio' name=' . $res . ' value=" . $opcion . ">";
+                        echo "<label><input type='radio' name=' . $res . ' value='" . $opcion . "' required>" . $opcion . "<label>";
                     }
                     echo "";
-                } elseif ($tipo == 'che') {
+                } elseif ($tipo == "che") {
                     echo "";
                     $query4 = mysqli_query($bd, "SELECT * FROM op_check WHERE ID_pregunta = '$id_preg'");
                     foreach ($query4 as $data4) {
                         $opcion = $data4["valor"];
-                        echo "<input type='check' name=' . $res . ' value=" . $opcion . ">";
+                        echo "<label><input type='checkbox' name=' . $res . ' value='" . $opcion . "' required>" . $opcion . "<label>";
                     }
                     echo "";
-                } elseif ($tipo == 'sel') {
+                } elseif ($tipo == "sel") {
                     echo "";
-                    echo "<select name=' . $res . '>";
+                    echo "<select name=' . $res . ' required>";
                     $query4 = mysqli_query($bd, "SELECT * FROM op_select WHERE ID_pregunta = '$id_preg'");
                     foreach ($query4 as $data4) {
                         $opcion = $data4["valor"];
-                        echo "<option value=" . $opcion . ">";
+                        echo "<option value=" . $opcion . ">" . $opcion . "</option>";
                     }
                     echo "</select>";
                     echo "";
                 } else {
-                    echo "<br>";
+                    echo "";
+                    echo "<input type='text' name='" . $res ."' required>";
+                    echo "";
                 }
             }
         }
+        echo "";
         echo "<input type='submit' value='Enviar respuestas.'>";
         echo "</form>";
     } else {
