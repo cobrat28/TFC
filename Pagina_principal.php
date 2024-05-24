@@ -13,7 +13,7 @@
     <body class="fondo" >
     <nav class="top">
             <div class="uno"><a href=Pagina_principal.php><img class="uno_img" src="Imagenes\Logo_solo.png" height="50%"></a></div>
-            <div class="dos"><p><a href="https://google.com">Encuestas</a></p></div>
+            <div class="dos"><p><a href="Encuestas.php">Encuestas</a></p></div>
             <div class="tres"><p><a href="https://google.com">Empresas</a></p></div>
             <div class="cuatro"><p><a href="perfil.php">Mi Perfil</a></p></div>
         </nav>

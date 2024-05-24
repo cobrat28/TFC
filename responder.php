@@ -1,0 +1,64 @@
+<?php
+session_start();
+if (isset($_SESSION["DNI"])) {
+    $dni = $_SESSION["DNI"];
+    $bd = mysqli_connect("localhost", "root", "", "varlud");
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        echo "<form action='' method='POST'>";
+        $id_enc = $_GET["id_enc"];
+        $query = mysqli_query($bd, "SELECT * FROM encuestas WHERE ID_encuesta = '$id_enc'");
+        //este foreach es el principal, en el que vamos a sacar los id de preguntas, si es necesario se hará count para las correspondientes, si salen más o menos preguntas de la que son.
+        foreach ($query as $preg) {
+            $id_preg = $preg["ID_pregunta"];
+            $query2 = mysqli_query($bd, "SELECT COUNT(ID_pregunta) as 'cantidad' FROM preguntas GROUP BY ID_encuesta WHERE ID_encuesta = '$id_enc'");
+            foreach ($query2 as $data) {
+                $cant = $data["cantidad"];
+            }
+            for ($i = 0; $i < $cant; $i++) {
+                $query3 = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_pregunta = '$id_preg'");
+                $res = 'res' . $i;
+                foreach ($query3 as $dato) {
+                    $tipo = $dato["tipo"];
+                    $texto = $dato["texto"];
+                }
+                echo "<h2> Pregunta: " . $texto . "</h2><br>";
+                if ($tipo == 'rad') {
+                    echo "";
+                    $query4 = mysqli_query($bd, "SELECT * FROM op_radio WHERE ID_pregunta = '$id_preg'");
+                    foreach ($query4 as $data4) {
+                        $opcion = $data4["valor"];
+                        echo "<input type='radio' name=' . $res . ' value=" . $opcion . ">";
+                    }
+                    echo "";
+                } elseif ($tipo == 'che') {
+                    echo "";
+                    $query4 = mysqli_query($bd, "SELECT * FROM op_check WHERE ID_pregunta = '$id_preg'");
+                    foreach ($query4 as $data4) {
+                        $opcion = $data4["valor"];
+                        echo "<input type='check' name=' . $res . ' value=" . $opcion . ">";
+                    }
+                    echo "";
+                } elseif ($tipo == 'sel') {
+                    echo "";
+                    echo "<select name=' . $res . '>";
+                    $query4 = mysqli_query($bd, "SELECT * FROM op_select WHERE ID_pregunta = '$id_preg'");
+                    foreach ($query4 as $data4) {
+                        $opcion = $data4["valor"];
+                        echo "<option value=" . $opcion . ">";
+                    }
+                    echo "</select>";
+                    echo "";
+                } else {
+                    echo "<br>";
+                }
+            }
+        }
+        echo "<input type='submit' value='Enviar respuestas.'>";
+        echo "</form>";
+    } else {
+        //POST
+    }
+} else {
+    //No hay usuario registrado
+    header("Location: login.html");
+}
