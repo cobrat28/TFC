@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="CSS\estilos.css">
 </head>
 
-<body class="fondo">
+<body class="body_ses">
     <article>
     <?php
     $bd = mysqli_connect("localhost", "root", "", "varlud");
@@ -25,7 +25,7 @@
             $emp = $dato3["nombre"];
         }
     ?>
-        <div class="form">
+        <div class="form6">
             <h2><?php echo $nom; ?></h2><br>
             <p>Preguntas: <?php echo $cant; ?></p><br>
             <p>Empresa: <?php echo $emp; ?></p><br>

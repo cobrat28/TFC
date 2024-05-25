@@ -315,6 +315,17 @@
     background-color: cornflowerblue;
 }
 
+.form6 {
+    text-align: center;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightgray;
+}
+
 .form div {
     margin-bottom: 10px;
 }
