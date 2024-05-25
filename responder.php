@@ -27,7 +27,7 @@ if (isset($_SESSION["DNI"])) {
                 $query4 = mysqli_query($bd, "SELECT * FROM op_radio WHERE ID_pregunta = '$id_preg'");
                 foreach ($query4 as $data4) {
                     $opcion = $data4["valor"];
-                    echo "<label><input type='radio' name=' . $res . ' value='" . $opcion . "' required>" . $opcion . "<label>";
+                    echo "<label><input type='radio' name='" . $res . "' value='" . $opcion . "' required>" . $opcion . "<label>";
                 }
                 echo "";
             } elseif ($tipo == "che") {
@@ -35,12 +35,12 @@ if (isset($_SESSION["DNI"])) {
                 $query4 = mysqli_query($bd, "SELECT * FROM op_check WHERE ID_pregunta = '$id_preg'");
                 foreach ($query4 as $data4) {
                     $opcion = $data4["valor"];
-                    echo "<label><input type='checkbox' name=' . $res . ' value='" . $opcion . "' required>" . $opcion . "<label>";
+                    echo "<label><input type='checkbox' name='" . $res . "' value='" . $opcion . "'>" . $opcion . "<label>";
                 }
                 echo "";
             } elseif ($tipo == "sel") {
                 echo "";
-                echo "<select name=' . $res . ' required>";
+                echo "<select name='" . $res . "' required>";
                 $query4 = mysqli_query($bd, "SELECT * FROM op_select WHERE ID_pregunta = '$id_preg'");
                 foreach ($query4 as $data4) {
                     $opcion = $data4["valor"];
@@ -56,12 +56,31 @@ if (isset($_SESSION["DNI"])) {
             $i++;
         }
         echo "<br>";
+        echo "<input type='hidden' name='id_enc' value='" . $id_enc . "'>";
+        echo "<input type='hidden' name='cant' value='" . $i . "'>";
         echo "<input type='submit' value='Enviar respuestas.'>";
         echo "</form>";
     } else {
         //POST
-        
-        for()
+        $cant = $_POST["cant"];
+        $id_enc = $_POST["id_enc"];
+        $query = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_encuesta = $id_enc");
+        $i=0;
+        //echo $cant;
+        echo "<h1>Resumen de la encuesta:</h1><br>";
+        echo "<br>";
+        foreach($query as $preg){
+            $id_preg = $preg["ID_pregunta"];
+            $txt = $preg["texto"];
+            $res = 'res' . $i;
+            $ans = $_POST["$res"];
+            echo "<h2>". $txt ."</h2><br>";
+            echo "<h3>". $ans  ."</h3><br>";
+            $query2 = "INSERT INTO respuestas VALUES (DEFAULT, $id_preg, $id_enc, '$dni', '$ans')";
+            mysqli_query($bd,$query2);
+            $i++;
+        }
+        echo "<form action = 'Pagina_principal.php'><input type = 'submit' value='Volver a la página principal.'></form>";
     }
 } else {
     //No hay usuario registrado
