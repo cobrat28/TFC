@@ -12,7 +12,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
     ?>
-    
+
     <h1 class="form3">Bienvenido a VarLud Analytics.</h1>
     <!--formulario con todos los datos para la tabla, se vendrá al registro por GET, y al enviar el formulario, ya se énviará a la página principal-->
     <form action="" method="POST" class="form">
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     </form>
     <?php
     }else{
-    
+
         $bd1=mysqli_connect("localhost", "root", "", "varlud");
         $nombre=$_POST["nombre"];
         $ape=$_POST["ape"];
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
         $fec_nac=$_POST["fec_nac"];
         $correo=$_POST["email"];
         $passwd=password_hash($_POST["passwd"], PASSWORD_DEFAULT);
-    
+
 
     $exist=mysqli_query($bd1, "SELECT * FROM empresas where CIF='$cif'");
     if (mysqli_num_rows($exist) == 0) {
@@ -72,10 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
     }
     mysqli_query($bd1, "INSERT INTO Login (correo, contraseña) values ('$correo', '$passwd')");
-    
+
     mysqli_query($bd1, "INSERT INTO Usuarios (nombre, apellidos, fecha_nac, correo, DNI, CIF)
     VALUES ('$nombre', '$ape', '$fec_nac', '$correo', '$dni', '$cif')");
-    
+
     header("Location: Pagina_principal.php");
     }
     ?>
