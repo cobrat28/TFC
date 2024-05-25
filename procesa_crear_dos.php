@@ -14,7 +14,7 @@ if (isset($_SESSION["admin"])) {
     $id_enc = $_SESSION["ID_encuesta"];
     //where max(ID_pregunta)
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        $preg = $_SESSION["preg"];
+        $preg = $_SESSION["cant_preg"];
         $txt = 0;
         $op = 0;
         $id = $_SESSION["ID_encuesta"];
@@ -48,8 +48,9 @@ if (isset($_SESSION["admin"])) {
         <?php
         //hasta aquí es GET, este else es para POST
     } else {
+        //POST
         //nombrar el numero de preguntas de cada una, para poder hacer el bucle
-        $num_preg = $_SESSION["preg"];
+        $num_preg = $_SESSION["cant_preg"];
         echo "<h2 class='form3'>Encuesta creada con éxito, puede verla en el apartado de Encuestas en el menú principal.</h2> <br>";
         echo "<div class='form5'>";
         for ($i = 0; $i < $num_preg; $i++) {

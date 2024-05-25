@@ -14,7 +14,7 @@ if(isset($_SESSION["admin"])){
     $preg =$_POST["preg"];
     $cif = $_SESSION["CIF"];
     $nom = $_POST["nombre"];
-    $_SESSION["preg"] = $_POST["preg"];
+    $_SESSION["cant_preg"] = $_POST["preg"];
     $_SESSION["cont"] = 1;
     $bd = mysqli_connect("localhost", "root", "", "varlud");
     mysqli_query($bd, "INSERT INTO encuestas VALUES (DEFAULT, '$cif', '$nom')");

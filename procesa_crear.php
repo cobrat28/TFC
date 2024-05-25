@@ -33,7 +33,7 @@
 session_start();
 if(isset($_SESSION["admin"])){
     if($_SERVER["REQUEST_METHOD"]=="GET"){
-        $preg = $_SESSION["preg"];
+        $preg = $_SESSION["cant_preg"];
         $bd = mysqli_connect("localhost", "root", "", "varlud");
         $id = $_SESSION["ID_encuesta"];
         for($i=0; $i < $preg; $i++){
