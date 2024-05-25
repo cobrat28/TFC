@@ -60,7 +60,7 @@ if (isset($_SESSION["admin"])) {
             $cant = $_POST["cant" . $i];
             //añadir un IF para las que no tengan opciones (texto)
             if ($cant != 0) {
-                echo $preg . ":<br>";
+                echo "<h3>" . $preg . ":</h3><br>";
                 for ($j = 0; $j < $cant; $j++) {
                     $txt = $_POST[$preg_t . $j];
                     echo $txt;
