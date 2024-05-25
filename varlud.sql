@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2024 a las 23:40:13
+-- Tiempo de generación: 25-05-2024 a las 17:20:04
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -51,6 +51,14 @@ CREATE TABLE `encuestas` (
   `nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `encuestas`
+--
+
+INSERT INTO `encuestas` (`ID_encuesta`, `CIF`, `nombre`) VALUES
+(141, 'Q87654321', 'Gestión de redes'),
+(142, 'Q87654321', 'prueba');
+
 -- --------------------------------------------------------
 
 --
@@ -67,7 +75,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`correo`, `contraseña`) VALUES
-('pito@gmail.com', '$2y$10$aXXup/L0vU0Kc.PRTyMxvu8A8yEL0oZoCmd2rNljIDwmAXVrj1.YK'),
+('miguel@varlud.com', '$2y$10$9RDnBgRMFB/19yHLmpsK1uf8BJJAph.uBn415PnOk9rrcXS2b4Tby'),
 ('prueba@gmail.com', '$2y$10$vXuoZGngXP9w5RTa3Iba8e0oQN6ATgJnMiYY9Z0zcaMvtIozOdO7a');
 
 -- --------------------------------------------------------
@@ -82,6 +90,36 @@ CREATE TABLE `op_check` (
   `valor` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `op_check`
+--
+
+INSERT INTO `op_check` (`ID_op_chk`, `ID_pregunta`, `valor`) VALUES
+(13, 347, 'Monitoreo de la salud de la red.'),
+(14, 347, 'Gestión de configuraciones y cambios.'),
+(15, 347, 'Seguridad en red y prevención de intrusiones.'),
+(16, 347, 'Administración de ancho de banda y optimización de'),
+(17, 347, 'Gestión de dispositivos de red (routes, switches, '),
+(18, 347, 'Gestión de la conectividad inalámbrica (WI-FI)'),
+(19, 351, 'Router.'),
+(20, 351, 'Switch.'),
+(21, 351, 'FireWall.'),
+(22, 351, 'Puntos de acceso inalámbricos (AP)'),
+(23, 351, 'Servidores de seguridad.'),
+(24, 351, 'Dispositivos de almacenamiento en red (NAS)'),
+(25, 347, 'Monitoreo de la salud de la red.'),
+(26, 347, 'Gestión de configuraciones y cambios.'),
+(27, 347, 'Seguridad en red y prevención de intrusiones.'),
+(28, 347, 'Administración de ancho de banda y optimización de'),
+(29, 347, 'Gestión de dispositivos de red (routes, switches, '),
+(30, 347, 'Gestión de la conectividad inalámbrica (WI-FI)'),
+(31, 351, 'Router.'),
+(32, 351, 'Switch.'),
+(33, 351, 'FireWall.'),
+(34, 351, 'Puntos de acceso inalámbricos (AP)'),
+(35, 351, 'Servidores de seguridad.'),
+(36, 351, 'Dispositivos de almacenamiento en red (NAS)');
+
 -- --------------------------------------------------------
 
 --
@@ -93,6 +131,44 @@ CREATE TABLE `op_radio` (
   `ID_pregunta` int(11) NOT NULL,
   `valor` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `op_radio`
+--
+
+INSERT INTO `op_radio` (`ID_op_rad`, `ID_pregunta`, `valor`) VALUES
+(65, 348, 'Muy satisfecho'),
+(66, 348, 'Satisfecho'),
+(67, 348, 'Neutral'),
+(68, 348, 'Insatisfecho'),
+(69, 348, 'Muy insatisfecho'),
+(70, 350, 'Acceso no autorizado a datos confidenciales.'),
+(71, 350, 'Interrupción del servicio debido a ataques de dene'),
+(72, 350, 'Pérdida de datos debido a brechas de seguridad.'),
+(73, 350, 'Malware y virus que afectan a la red.'),
+(74, 350, 'Vulnerabilidades en la infraestructura de red.'),
+(75, 354, 'Experiencia y reputación en el mercado.'),
+(76, 354, 'Costo de los servicios'),
+(77, 354, 'Nivel de soporte técnico ofrecido'),
+(78, 354, 'Gama de servicios y funcionalidades dispobles.'),
+(79, 354, 'Flexibilidad para adaptarse a las necesidades espe'),
+(80, 348, 'Muy satisfecho'),
+(81, 348, 'Satisfecho'),
+(82, 348, 'Neutral'),
+(83, 348, 'Insatisfecho'),
+(84, 348, 'Muy insatisfecho'),
+(85, 350, 'Acceso no autorizado a datos confidenciales.'),
+(86, 350, 'Interrupción del servicio debido a ataques de dene'),
+(87, 350, 'Pérdida de datos debido a brechas de seguridad.'),
+(88, 350, 'Malware y virus que afectan a la red.'),
+(89, 350, 'Vulnerabilidades en la infraestructura de red.'),
+(90, 354, 'Experiencia y reputación en el mercado.'),
+(91, 354, 'Costo de los servicios'),
+(92, 354, 'Nivel de soporte técnico ofrecido'),
+(93, 354, 'Gama de servicios y funcionalidades dispobles.'),
+(94, 354, 'Flexibilidad para adaptarse a las necesidades espe'),
+(95, 377, 'Si '),
+(96, 377, 'No');
 
 -- --------------------------------------------------------
 
@@ -106,6 +182,32 @@ CREATE TABLE `op_select` (
   `valor` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `op_select`
+--
+
+INSERT INTO `op_select` (`ID_op_sel`, `ID_pregunta`, `valor`) VALUES
+(15, 346, 'Mejorar la seguridad de la red.'),
+(16, 346, 'Optimizar el rendimiento de la red.'),
+(17, 346, 'Reducir costos operativos.'),
+(18, 346, 'Simplificar la administración de la red.'),
+(19, 346, 'Implementar nuevas tecnologías de red.'),
+(20, 352, 'Muy importante'),
+(21, 352, 'Importante'),
+(22, 352, 'Neutral'),
+(23, 352, 'Poco imporante'),
+(24, 352, 'Me la pela'),
+(25, 346, 'Mejorar la seguridad de la red.'),
+(26, 346, 'Optimizar el rendimiento de la red.'),
+(27, 346, 'Reducir costos operativos.'),
+(28, 346, 'Simplificar la administración de la red.'),
+(29, 346, 'Implementar nuevas tecnologías de red.'),
+(30, 352, 'Muy importante'),
+(31, 352, 'Importante'),
+(32, 352, 'Neutral'),
+(33, 352, 'Poco imporante'),
+(34, 352, 'Me la pela');
+
 -- --------------------------------------------------------
 
 --
@@ -118,6 +220,54 @@ CREATE TABLE `preguntas` (
   `tipo` varchar(3) NOT NULL,
   `texto` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `preguntas`
+--
+
+INSERT INTO `preguntas` (`ID_pregunta`, `ID_encuesta`, `tipo`, `texto`) VALUES
+(336, 141, 'sel', '¿Cuál es tu principal objetivo al buscar servicios de gestión de redes para tu empresa?'),
+(337, 141, 'che', '¿Qué aspectos de la gestión de redes son más importantes para tú empresa?'),
+(338, 141, 'rad', '¿Qué nivel de satisfacción tienes con tus servicios actuales de gestión de redes?'),
+(339, 141, 'tex', '¿Qué funcionalidades específicas te gustaría ver en una solución de gestión de redes que aún no estés utilizando?'),
+(340, 141, 'rad', '¿Cuál es tu principal preocupación en cuanto a la seguridad de red de tu empresa se refiere?'),
+(341, 141, 'che', '¿Qué tipos de dispositivos de red utilizas en tu infraestructura?'),
+(342, 141, 'sel', '¿Qué nivel de importancia le das a la monitorización en tiempo real de la red de tu empresa?'),
+(343, 141, 'tex', '¿Cuáles son los principales desafíos que enfrentas actualmente en la gestión de redes de tu empresa?'),
+(344, 141, 'rad', '¿Cuál es el principal criterio que consideras al seleccionar un proveedor de servicios de gestión de red?'),
+(345, 141, 'tex', '¿Qué mejoras o actualizaciones te gustaria ver en los servicios de gestión de redes que actualmente utilices?'),
+(346, 141, 'sel', '¿Cuál es tu principal objetivo al buscar servicios de gestión de redes para tu empresa?'),
+(347, 141, 'che', '¿Qué aspectos de la gestión de redes son más importantes para tú empresa?'),
+(348, 141, 'rad', '¿Qué nivel de satisfacción tienes con tus servicios actuales de gestión de redes?'),
+(349, 141, 'tex', '¿Qué funcionalidades específicas te gustaría ver en una solución de gestión de redes que aún no estés utilizando?'),
+(350, 141, 'rad', '¿Cuál es tu principal preocupación en cuanto a la seguridad de red de tu empresa se refiere?'),
+(351, 141, 'che', '¿Qué tipos de dispositivos de red utilizas en tu infraestructura?'),
+(352, 141, 'sel', '¿Qué nivel de importancia le das a la monitorización en tiempo real de la red de tu empresa?'),
+(353, 141, 'tex', '¿Cuáles son los principales desafíos que enfrentas actualmente en la gestión de redes de tu empresa?'),
+(354, 141, 'rad', '¿Cuál es el principal criterio que consideras al seleccionar un proveedor de servicios de gestión de red?'),
+(355, 141, 'tex', '¿Qué mejoras o actualizaciones te gustaria ver en los servicios de gestión de redes que actualmente utilices?'),
+(356, 141, 'sel', '¿Cuál es tu principal objetivo al buscar servicios de gestión de redes para tu empresa?'),
+(357, 141, 'che', '¿Qué aspectos de la gestión de redes son más importantes para tú empresa?'),
+(358, 141, 'rad', '¿Qué nivel de satisfacción tienes con tus servicios actuales de gestión de redes?'),
+(359, 141, 'tex', '¿Qué funcionalidades específicas te gustaría ver en una solución de gestión de redes que aún no estés utilizando?'),
+(360, 141, 'rad', '¿Cuál es tu principal preocupación en cuanto a la seguridad de red de tu empresa se refiere?'),
+(361, 141, 'che', '¿Qué tipos de dispositivos de red utilizas en tu infraestructura?'),
+(362, 141, 'sel', '¿Qué nivel de importancia le das a la monitorización en tiempo real de la red de tu empresa?'),
+(363, 141, 'tex', '¿Cuáles son los principales desafíos que enfrentas actualmente en la gestión de redes de tu empresa?'),
+(364, 141, 'rad', '¿Cuál es el principal criterio que consideras al seleccionar un proveedor de servicios de gestión de red?'),
+(365, 141, 'tex', '¿Qué mejoras o actualizaciones te gustaria ver en los servicios de gestión de redes que actualmente utilices?'),
+(366, 141, 'sel', '¿Cuál es tu principal objetivo al buscar servicios de gestión de redes para tu empresa?'),
+(367, 141, 'che', '¿Qué aspectos de la gestión de redes son más importantes para tú empresa?'),
+(368, 141, 'rad', '¿Qué nivel de satisfacción tienes con tus servicios actuales de gestión de redes?'),
+(369, 141, 'tex', '¿Qué funcionalidades específicas te gustaría ver en una solución de gestión de redes que aún no estés utilizando?'),
+(370, 141, 'rad', '¿Cuál es tu principal preocupación en cuanto a la seguridad de red de tu empresa se refiere?'),
+(371, 141, 'che', '¿Qué tipos de dispositivos de red utilizas en tu infraestructura?'),
+(372, 141, 'sel', '¿Qué nivel de importancia le das a la monitorización en tiempo real de la red de tu empresa?'),
+(373, 141, 'tex', '¿Cuáles son los principales desafíos que enfrentas actualmente en la gestión de redes de tu empresa?'),
+(374, 141, 'rad', '¿Cuál es el principal criterio que consideras al seleccionar un proveedor de servicios de gestión de red?'),
+(375, 141, 'tex', '¿Qué mejoras o actualizaciones te gustaria ver en los servicios de gestión de redes que actualmente utilices?'),
+(376, 142, 'tex', 'Prueba 1'),
+(377, 142, 'rad', 'Prueba 2');
 
 -- --------------------------------------------------------
 
@@ -154,6 +304,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`nombre`, `apellidos`, `fecha_nac`, `correo`, `DNI`, `CIF`, `admin`) VALUES
+('Miguel Ángel', 'Ludeña', '2000-06-15', 'miguel@varlud.com', '12345678F', 'Q87654321', 1),
 ('Francisco', 'Vargas', '2024-04-01', 'prueba@gmail.com', '12345678Q', 'Q87654321', 1);
 
 --
@@ -212,9 +363,9 @@ ALTER TABLE `preguntas`
 --
 ALTER TABLE `respuestas`
   ADD PRIMARY KEY (`ID_respuesta`),
-  ADD UNIQUE KEY `ID_pregunta` (`ID_pregunta`),
-  ADD UNIQUE KEY `DNI` (`DNI`),
-  ADD UNIQUE KEY `ID_encuesta` (`ID_encuesta`);
+  ADD KEY `ID_pregunta` (`ID_pregunta`) USING BTREE,
+  ADD KEY `DNI` (`DNI`) USING BTREE,
+  ADD KEY `ID_encuesta` (`ID_encuesta`) USING BTREE;
 
 --
 -- Indices de la tabla `usuarios`
@@ -222,7 +373,7 @@ ALTER TABLE `respuestas`
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`DNI`),
   ADD UNIQUE KEY `correo` (`correo`),
-  ADD UNIQUE KEY `CIF` (`CIF`);
+  ADD KEY `CIF` (`CIF`) USING BTREE;
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -232,31 +383,31 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  MODIFY `ID_encuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `ID_encuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT de la tabla `op_check`
 --
 ALTER TABLE `op_check`
-  MODIFY `ID_op_chk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID_op_chk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `op_radio`
 --
 ALTER TABLE `op_radio`
-  MODIFY `ID_op_rad` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `ID_op_rad` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT de la tabla `op_select`
 --
 ALTER TABLE `op_select`
-  MODIFY `ID_op_sel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID_op_sel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `ID_pregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=326;
+  MODIFY `ID_pregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=378;
 
 --
 -- Restricciones para tablas volcadas
