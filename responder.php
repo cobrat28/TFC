@@ -8,7 +8,7 @@ if (isset($_SESSION["DNI"])) {
         $id_enc = $_GET["id_enc"];
         $query = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_encuesta = $id_enc");
         //este foreach es el principal, en el que vamos a sacar los id de preguntas, si es necesario se hará count para las correspondientes, si salen más o menos preguntas de la que son.
-        $i=0;
+        $i = 0;
         foreach ($query as $preg) {
             $id_preg = $preg["ID_pregunta"];
             $query2 = mysqli_query($bd, "SELECT COUNT(ID_pregunta) as 'cantidad' FROM preguntas WHERE ID_encuesta = $id_enc GROUP BY ID_encuesta");
@@ -27,7 +27,7 @@ if (isset($_SESSION["DNI"])) {
                 $query4 = mysqli_query($bd, "SELECT * FROM op_radio WHERE ID_pregunta = '$id_preg'");
                 foreach ($query4 as $data4) {
                     $opcion = $data4["valor"];
-                    echo "<label><input type='radio' name='" . $res . "' value='" . $opcion . "' required>" . $opcion . "<label>";
+                    echo "<label><input type='radio' name='" . $res . "' value='" . $opcion . "' required>" . $opcion . "<label><br>";
                 }
                 echo "";
             } elseif ($tipo == "che") {
@@ -35,7 +35,8 @@ if (isset($_SESSION["DNI"])) {
                 $query4 = mysqli_query($bd, "SELECT * FROM op_check WHERE ID_pregunta = '$id_preg'");
                 foreach ($query4 as $data4) {
                     $opcion = $data4["valor"];
-                    echo "<label><input type='checkbox' name='" . $res . "' value='" . $opcion . "'>" . $opcion . "<label>";
+                    //Necesitamos marcar que las preguntas de tipo check se amnden como array, de ahí la estructura de name ='{$res}[]'
+                    echo "<label><input type='checkbox' name='{$res}[]' value='" . $opcion . "'>" . $opcion . "<label><br>";
                 }
                 echo "";
             } elseif ($tipo == "sel") {
@@ -44,7 +45,7 @@ if (isset($_SESSION["DNI"])) {
                 $query4 = mysqli_query($bd, "SELECT * FROM op_select WHERE ID_pregunta = '$id_preg'");
                 foreach ($query4 as $data4) {
                     $opcion = $data4["valor"];
-                    echo "<option value=" . $opcion . ">" . $opcion . "</option>";
+                    echo "<option value='" . $opcion . "'>" . $opcion . "</option>";
                 }
                 echo "</select>";
                 echo "";
@@ -56,6 +57,7 @@ if (isset($_SESSION["DNI"])) {
             $i++;
         }
         echo "<br>";
+        echo "<br>";
         echo "<input type='hidden' name='id_enc' value='" . $id_enc . "'>";
         echo "<input type='hidden' name='cant' value='" . $i . "'>";
         echo "<input type='submit' value='Enviar respuestas.'>";
@@ -65,19 +67,30 @@ if (isset($_SESSION["DNI"])) {
         $cant = $_POST["cant"];
         $id_enc = $_POST["id_enc"];
         $query = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_encuesta = $id_enc");
-        $i=0;
+        $i = 0;
         //echo $cant;
         echo "<h1>Resumen de la encuesta:</h1><br>";
         echo "<br>";
-        foreach($query as $preg){
+        foreach ($query as $preg) {
             $id_preg = $preg["ID_pregunta"];
             $txt = $preg["texto"];
             $res = 'res' . $i;
             $ans = $_POST["$res"];
-            echo "<h2>". $txt ."</h2><br>";
-            echo "<h3>". $ans  ."</h3><br>";
-            $query2 = "INSERT INTO respuestas VALUES (DEFAULT, $id_preg, $id_enc, '$dni', '$ans')";
-            mysqli_query($bd,$query2);
+            //hacemos eset if porque las opciones de tipo check se almacenan en un array, entonces las tenemos que descommponer.
+            $chk = mysqli_query($bd, "SELECT tipo FROM preguntas WHERE ID_pregunta = $id_preg;");
+            $type = mysqli_fetch_assoc($chk)["tipo"];
+            if ($type == 'che') {
+                $ans_imp = implode(", ", $ans);
+                //var_dump($ans);
+                echo "<h2>" . $txt . "</h2><br>";
+                echo "<h3>" . $ans_imp  . "</h3><br>";
+                //$query2 = "INSERT INTO respuestas VALUES (DEFAULT, $id_preg, $id_enc, '$dni', '$ans_imp')";
+            } else {
+                echo "<h2>" . $txt . "</h2><br>";
+                echo "<h3>" . $ans  . "</h3><br>";
+                //$query2 = "INSERT INTO respuestas VALUES (DEFAULT, $id_preg, $id_enc, '$dni', '$ans')";
+            }
+            //mysqli_query($bd, $query2);
             $i++;
         }
         echo "<form action = 'Pagina_principal.php'><input type = 'submit' value='Volver a la página principal.'></form>";
