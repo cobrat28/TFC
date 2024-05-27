@@ -22,7 +22,7 @@ if (isset($_SESSION["admin"])) {
             $txt = $_GET["txt" . $i];
             $op = $_GET["op" . $i];
             if (isset($_GET["cant_op" . $i])){
-                $cant = $_GET["cant_op" . $i]; //ERRORRRROROROROROROO
+                $cant = $_GET["cant_op" . $i];
             }else{
                 $cant = 0;
             }
