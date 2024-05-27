@@ -326,6 +326,29 @@
     background-color: lightgray;
 }
 
+.form7 {
+    text-align: center;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightcoral;
+    margin-top: 100px;
+}
+
+.form8 {
+    text-align: center;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightcoral;
+}
+
 .form div {
     margin-bottom: 10px;
 }

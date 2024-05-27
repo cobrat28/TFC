@@ -25,7 +25,7 @@
             $emp = $dato3["nombre"];
         }
     ?>
-        <div class="form6">
+        <div class="form7">
             <h2><?php echo $nom; ?></h2><br>
             <p>Preguntas: <?php echo $cant; ?></p><br>
             <p>Empresa: <?php echo $emp; ?></p><br>

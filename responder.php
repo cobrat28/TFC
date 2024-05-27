@@ -1,10 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>VarLud Analytics</title>
+    <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
+    <link rel="stylesheet" href="CSS\estilos.css">
+</head>
+<body class="body_print">
 <?php
 session_start();
 if (isset($_SESSION["DNI"])) {
     $dni = $_SESSION["DNI"];
     $bd = mysqli_connect("localhost", "root", "", "varlud");
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        echo "<form action='' method='POST'>";
+        echo "<form action='' method='POST' class='form7'>";
         $id_enc = $_GET["id_enc"];
         $query = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_encuesta = $id_enc");
         //este foreach es el principal, en el que vamos a sacar los id de preguntas, si es necesario se hará count para las correspondientes, si salen más o menos preguntas de la que son.
@@ -69,7 +78,7 @@ if (isset($_SESSION["DNI"])) {
         $query = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_encuesta = $id_enc");
         $i = 0;
         //echo $cant;
-        echo "<h1>Resumen de la encuesta:</h1><br>";
+        echo "<h1 class= 'form3'>Resumen de la encuesta:</h1><br>";
         echo "<br>";
         foreach ($query as $preg) {
             $id_preg = $preg["ID_pregunta"];
@@ -82,12 +91,12 @@ if (isset($_SESSION["DNI"])) {
             if ($type == 'che') {
                 $ans_imp = implode(", ", $ans);
                 //var_dump($ans);
-                echo "<h2>" . $txt . "</h2><br>";
-                echo "<h3>" . $ans_imp  . "</h3><br>";
+                echo "<div class='form8'><h2>" . $txt . "</h2><br>";
+                echo "<h3>" . $ans_imp  . "</h3></div><br>";
                 //$query2 = "INSERT INTO respuestas VALUES (DEFAULT, $id_preg, $id_enc, '$dni', '$ans_imp')";
             } else {
-                echo "<h2>" . $txt . "</h2><br>";
-                echo "<h3>" . $ans  . "</h3><br>";
+                echo "<div class='form8'><h2>" . $txt . "</h2><br>";
+                echo "<h3>" . $ans  . "</h3></div><br>";
                 //$query2 = "INSERT INTO respuestas VALUES (DEFAULT, $id_preg, $id_enc, '$dni', '$ans')";
             }
             //mysqli_query($bd, $query2);
@@ -99,3 +108,6 @@ if (isset($_SESSION["DNI"])) {
     //No hay usuario registrado
     header("Location: login.html");
 }
+?>
+</body>
+</html>
