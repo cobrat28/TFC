@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2024 a las 18:59:20
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 27-05-2024 a las 22:25:15
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -87,7 +87,7 @@ INSERT INTO `login` (`correo`, `contraseña`) VALUES
 CREATE TABLE `op_check` (
   `ID_op_chk` int(11) NOT NULL,
   `ID_pregunta` int(11) NOT NULL,
-  `valor` varchar(50) NOT NULL
+  `valor` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -98,8 +98,8 @@ INSERT INTO `op_check` (`ID_op_chk`, `ID_pregunta`, `valor`) VALUES
 (13, 347, 'Monitoreo de la salud de la red.'),
 (14, 347, 'Gestión de configuraciones y cambios.'),
 (15, 347, 'Seguridad en red y prevención de intrusiones.'),
-(16, 347, 'Administración de ancho de banda y optimización de'),
-(17, 347, 'Gestión de dispositivos de red (routes, switches, '),
+(16, 347, 'Administración de ancho de banda y optimización del tráfico.'),
+(17, 347, 'Gestión de dispositivos de red (routes, switches, FW, etc...)'),
 (18, 347, 'Gestión de la conectividad inalámbrica (WI-FI)'),
 (19, 351, 'Router.'),
 (20, 351, 'Switch.'),
@@ -117,7 +117,7 @@ INSERT INTO `op_check` (`ID_op_chk`, `ID_pregunta`, `valor`) VALUES
 CREATE TABLE `op_radio` (
   `ID_op_rad` int(50) NOT NULL,
   `ID_pregunta` int(11) NOT NULL,
-  `valor` varchar(50) NOT NULL
+  `valor` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -131,15 +131,15 @@ INSERT INTO `op_radio` (`ID_op_rad`, `ID_pregunta`, `valor`) VALUES
 (68, 348, 'Insatisfecho'),
 (69, 348, 'Muy insatisfecho'),
 (70, 350, 'Acceso no autorizado a datos confidenciales.'),
-(71, 350, 'Interrupción del servicio debido a ataques de dene'),
+(71, 350, 'Interrupción del servicio debido a ataques de denegación de servicio (DDoS).'),
 (72, 350, 'Pérdida de datos debido a brechas de seguridad.'),
 (73, 350, 'Malware y virus que afectan a la red.'),
 (74, 350, 'Vulnerabilidades en la infraestructura de red.'),
 (75, 354, 'Experiencia y reputación en el mercado.'),
 (76, 354, 'Costo de los servicios'),
 (77, 354, 'Nivel de soporte técnico ofrecido'),
-(78, 354, 'Gama de servicios y funcionalidades dispobles.'),
-(79, 354, 'Flexibilidad para adaptarse a las necesidades espe'),
+(78, 354, 'Gama de servicios y funcionalidades disponibles.'),
+(79, 354, 'Flexibilidad para adaptarse a las necesidades específicas de la empresa.'),
 (95, 377, 'Si '),
 (96, 377, 'No');
 
@@ -152,7 +152,7 @@ INSERT INTO `op_radio` (`ID_op_rad`, `ID_pregunta`, `valor`) VALUES
 CREATE TABLE `op_select` (
   `ID_op_sel` int(11) NOT NULL,
   `ID_pregunta` int(11) NOT NULL,
-  `valor` varchar(50) NOT NULL
+  `valor` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -213,7 +213,7 @@ CREATE TABLE `respuestas` (
   `ID_pregunta` int(11) NOT NULL,
   `ID_encuesta` int(11) NOT NULL,
   `DNI` varchar(9) NOT NULL,
-  `respuesta` varchar(500) NOT NULL
+  `respuesta` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -221,19 +221,16 @@ CREATE TABLE `respuestas` (
 --
 
 INSERT INTO `respuestas` (`ID_respuesta`, `ID_pregunta`, `ID_encuesta`, `DNI`, `respuesta`) VALUES
-(1, 376, 142, '12345678Q', 'Pito'),
-(2, 376, 142, '12345678Q', 'Pito'),
-(3, 377, 142, '12345678Q', 'Si '),
-(4, 346, 141, '12345678Q', 'Reducir'),
-(5, 347, 141, '12345678Q', 'Gestión de la conectividad inalámbrica (WI-FI)'),
-(6, 348, 141, '12345678Q', 'Muy satisfecho'),
-(7, 349, 141, '12345678Q', 'Pito'),
-(8, 350, 141, '12345678Q', 'Acceso no autorizado a datos confidenciales.'),
-(9, 351, 141, '12345678Q', 'Dispositivos de almacenamiento en red (NAS)'),
-(10, 352, 141, '12345678Q', 'Neutral'),
-(11, 353, 141, '12345678Q', 'pito doble'),
-(12, 354, 141, '12345678Q', 'Experiencia y reputación en el mercado.'),
-(13, 355, 141, '12345678Q', 'Pito triple');
+(44, 346, 141, '12345678Q', 'Optimizar el rendimiento de la red.'),
+(45, 347, 141, '12345678Q', 'Administración de ancho de banda y optimización del tráfico.'),
+(46, 348, 141, '12345678Q', 'Muy satisfecho'),
+(47, 349, 141, '12345678Q', 'Pito'),
+(48, 350, 141, '12345678Q', 'Interrupción del servicio debido a ataques de denegación de servicio (DDoS).'),
+(49, 351, 141, '12345678Q', 'Dispositivos de almacenamiento en red (NAS)'),
+(50, 352, 141, '12345678Q', 'Me la pela'),
+(51, 353, 141, '12345678Q', 'pito doble'),
+(52, 354, 141, '12345678Q', 'Costo de los servicios'),
+(53, 355, 141, '12345678Q', 'Pito triple');
 
 -- --------------------------------------------------------
 
@@ -365,7 +362,7 @@ ALTER TABLE `preguntas`
 -- AUTO_INCREMENT de la tabla `respuestas`
 --
 ALTER TABLE `respuestas`
-  MODIFY `ID_respuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_respuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Restricciones para tablas volcadas
