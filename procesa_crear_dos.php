@@ -21,7 +21,11 @@ if (isset($_SESSION["admin"])) {
         for ($i = 0; $i < $preg; $i++) {
             $txt = $_GET["txt" . $i];
             $op = $_GET["op" . $i];
-            $cant = $_GET["cant_op" . $i];
+            if (isset($_GET["cant_op" . $i])){
+                $cant = $_GET["cant_op" . $i]; //ERRORRRROROROROROROO
+            }else{
+                $cant = 0;
+            }
             $pru = "INSERT INTO preguntas VALUES (DEFAULT, $id, '$op', '$txt')";
             mysqli_query($bd, $pru);
             //el echo de abajo, <p><?php echo $txt </p>, es para ver la pregunta

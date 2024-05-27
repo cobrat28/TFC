@@ -26,46 +26,59 @@
 
     <?php
     $bd = mysqli_connect("localhost", "root", "", "varlud");
-    //hacer otro if con mysqli_num_rows con un select de si hay algo en la tabla de encuestas, de ahí se procede a lo que toque
-    $query1 = mysqli_query($bd, "SELECT ID_encuesta FROM encuestas ORDER BY ID_encuesta desc LIMIT 3;");
+    $query1 = mysqli_query($bd, "SELECT ID_encuesta FROM encuestas ORDER BY ID_encuesta DESC LIMIT 3;");
     $i = 0;
+    $arr = [];
+    //Creamos un array, donde almacenaremos los 3 id_encuesta que toquen
     foreach ($query1 as $data) {
         $id = $data["ID_encuesta"];
-        $query2 = mysqli_query($bd, "SELECT * FROM encuestas WHERE ID_encuesta = $id");
-        if (mysqli_num_rows($query2) > 0) {
-            foreach ($query2 as $data2) {
-                
-                $nom1 = $data2["nombre"];
-                $cif1 = $data2["CIF"];
-            }
-        } else {
-            echo 'funciona hasta cierto punto';
-        }
-        $query5 = mysqli_query($bd, "SELECT * FROM empresas WHERE CIF = $cif1");
-        $query6 = mysqli_query($bd, "SELECT * FROM empresas WHERE CIF = $cif2");
-        $query7 = mysqli_query($bd, "SELECT * FROM empresas WHERE CIF = $cif3");
-        foreach ($query5 as $data5) {
-            $emp1 = $data2["nombre"];
-        }
-        foreach ($query6 as $data6) {
-            $emp2 = $data6["nombre"];
-        }
-        foreach ($query7 as $data7) {
-            $emp3 = $data7["nombre"];
-        }
-        $query8 = mysqli_query($bd, "SELECT COUNT(ID_pregunta) AS total FROM preguntas WHERE ID_encuesta = $cod0 GROUP BY ID_encuesta");
-        $query9 = mysqli_query($bd, "SELECT COUNT(ID_pregunta) AS total FROM preguntas WHERE ID_encuesta = $cod1 GROUP BY ID_encuesta");
-        $query10 = mysqli_query($bd, "SELECT COUNT(ID_pregunta) AS total FROM preguntas WHERE ID_encuesta = $cod2 GROUP BY ID_encuesta");
-        foreach ($query2 as $data2) {
-            $pre1 = $data8["total"];
-        }
-        foreach ($query3 as $data3) {
-            $pre2 = $data0["total"];
-        }
-        foreach ($query4 as $data4) {
-            $pre3 = $data10["total"];
-        }
+        $arr[] = $id;
     }
+    $query2 = mysqli_query($bd, "SELECT * FROM encuestas WHERE ID_encuesta = $arr[0]");
+    foreach ($query2 as $data2) {
+        $nom1 = $data2["nombre"];
+        $cif1 = $data2["CIF"];
+    }
+    $query3 = mysqli_query($bd, "SELECT * FROM encuestas WHERE ID_encuesta = $arr[1]");
+    foreach ($query3 as $data3) {
+        $nom2 = $data3["nombre"];
+        $cif2 = $data3["CIF"];
+    }
+    $query4 = mysqli_query($bd, "SELECT * FROM encuestas WHERE ID_encuesta = $arr[2]");
+    foreach ($query4 as $data4) {
+        $nom3 = $data4["nombre"];
+        $cif3 = $data4["CIF"];
+    }
+
+
+    //Sacamos con el CIF los nombres de las empresas.
+    $query5 = mysqli_query($bd, "SELECT nombre FROM empresas WHERE CIF = '$cif1'");
+    $query6 = mysqli_query($bd, "SELECT nombre FROM empresas WHERE CIF = '$cif2'");
+    $query7 = mysqli_query($bd, "SELECT nombre FROM empresas WHERE CIF = '$cif3'");
+    foreach ($query5 as $data5) {
+        $emp1 = $data5["nombre"];
+    }
+    foreach ($query6 as $data6) {
+        $emp2 = $data6["nombre"];
+    }
+    foreach ($query7 as $data7) {
+        $emp3 = $data7["nombre"];
+    }
+
+    //Contamos las preguntas que tiene cada encuesta
+    $query8 = mysqli_query($bd, "SELECT COUNT(ID_pregunta) AS total FROM preguntas WHERE ID_encuesta = $arr[0] GROUP BY ID_encuesta");
+    $query9 = mysqli_query($bd, "SELECT COUNT(ID_pregunta) AS total FROM preguntas WHERE ID_encuesta = $arr[1] GROUP BY ID_encuesta");
+    $query10 = mysqli_query($bd, "SELECT COUNT(ID_pregunta) AS total FROM preguntas WHERE ID_encuesta = $arr[2] GROUP BY ID_encuesta");
+    foreach ($query8 as $data8) {
+        $pre1 = $data8["total"];
+    }
+    foreach ($query9 as $data9) {
+        $pre2 = $data9["total"];
+    }
+    foreach ($query10 as $data10) {
+        $pre3 = $data10["total"];
+    }
+
     ?>
     <article style="display: flex; flex-wrap: wrap; height: 100%; margin-top: 0%;">
         <div id="izq" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: yellow; border-radius: 25px;">
@@ -74,6 +87,10 @@
             <p><?php echo $emp1; ?></p><br>
             <br>
             <p><?php echo $pre1; ?></p>
+            <form action = "responder.php">
+                <input type="hidden" value="<?php echo $arr[0] ?>" name="id_enc">
+                <input type="submit" value="Responder">
+            </form>
         </div>
         <div id="cen" style="margin-left: 10% ; margin-top : 15%; height: 45%; width : 20%; background-color: lightgreen;border-radius: 25px;">
             <p><?php echo $nom2; ?></p><br>
@@ -81,6 +98,10 @@
             <p><?php echo $emp2; ?></p><br>
             <br>
             <p><?php echo $pre2; ?></p>
+            <form action = "responder.php">
+                <input type="hidden" value="<?php echo $arr[1] ?>" name="id_enc">
+                <input type="submit" value="Responder">
+            </form>
         </div>
         <div id="der" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: #e96a6a;border-radius: 25px;">
             <p><?php echo $nom3; ?></p><br>
@@ -88,6 +109,10 @@
             <p><?php echo $emp3; ?></p><br>
             <br>
             <p><?php echo $pre3; ?></p>
+            <form action = "responder.php">
+                <input type="hidden" value="<?php echo $arr[2] ?>" name="id_enc">
+                <input type="submit" value="Responder">
+            </form>
         </div>
     </article>
 
