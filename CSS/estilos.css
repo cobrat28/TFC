@@ -328,8 +328,8 @@
 
 .form7 {
     text-align: center;
-    padding-left: 80px;
-    padding-right: 80px;
+    padding-left: 25%;
+    padding-right: 25%;
     padding-top: 40px;
     padding-bottom: 40px;
     border: 1px solid black;
@@ -340,10 +340,10 @@
 
 .form8 {
     text-align: center;
-    padding-left: 80px;
-    padding-right: 80px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 30px;
+    padding-bottom: 30px;
     border: 1px solid black;
     border-radius: 5px;
     background-color: lightcoral;
