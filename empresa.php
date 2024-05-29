@@ -1,11 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>VarLud Analytics</title>
+    <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
+    <link rel="stylesheet" href="CSS\estilos.css">
+</head>
+
+<body class="body_ses">
 <?php
- 
+include 'encabezado.php';
+?>
+
+<?php
+
 $bd = mysqli_connect("localhost", "root","", "varlud");
 $query = mysqli_query($bd, "SELECT * FROM empresas");
 foreach($query as $data){
     $emp = $data["nombre"];
     $cif = $data["CIF"];
-    echo "<h1>Empresa: " . $emp . " CIF: " . $cif . "</h1>";
+    echo "<h1 class='form5'>Empresa: " . $emp . " CIF: " . $cif . "</h1>";
     $query2 = mysqli_query($bd, "SELECT COUNT(ID_encuesta) as 'encuestas' FROM encuestas WHERE CIF ='$cif' GROUP BY '$cif'");
     foreach($query2 as $data2){
         $cant = $data2["encuestas"];
@@ -14,7 +28,7 @@ foreach($query as $data){
     foreach($query3 as $data3){
         $id_enc = $data3["ID_encuesta"];
         $nom = $data3["nombre"];
-        echo "<form action='responder.php' method='GET' class=''>";
+        echo "<form action='responder.php' method='GET' class='form7'>";
         echo "<h2>" . $nom ."</h2>";
         echo "<p>" . $cant ." Preguntas</p>";
         echo "<input type='hidden' name='id_enc' value=" . $id_enc .">";
@@ -22,3 +36,6 @@ foreach($query as $data){
         echo "</form>";
     }
 }
+?>
+</body>
+</html>

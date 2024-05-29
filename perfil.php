@@ -8,8 +8,11 @@
 </head>
 <body class="body_print">
 <?php
- session_start();
- if(isset($_SESSION["DNI"])){
+
+include 'encabezado.php';
+
+session_start();
+if(isset($_SESSION["DNI"])){
     $bd=mysqli_connect("localhost", "root", "", "varlud");
     $dni=$_SESSION["DNI"];
     $query1=mysqli_query($bd,"SELECT * FROM usuarios WHERE DNI='$dni'");
@@ -32,7 +35,7 @@
     foreach ($query4 as $dato4){
         $enc=$dato4["encuestas"];
         }
-    echo "<h1 class='form3'>Hola $nombre, aquí tienes tus datos:</h1><br>";
+    echo "<h1 class='form5'>Hola $nombre, aquí tienes tus datos:</h1><br>";
     ?>
     <div class="form">
         <?php

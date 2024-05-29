@@ -10,21 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body class="fondo">
-    <nav class="top">
-        <div class="uno"><a href=Pagina_principal.php><img class="uno_img" src="Imagenes\Logo_solo.png" height="50%"></a></div>
-        <div class="dos">
-            <p><a href="Encuestas.php">Encuestas</a></p>
-        </div>
-        <div class="tres">
-            <p><a href="empresa.php">Empresas</a></p>
-        </div>
-        <div class="cuatro">
-            <p><a href="perfil.php">Mi Perfil</a></p>
-        </div>
-    </nav>
+<?php
+include 'encabezado.php';
+?>
 
+<body class="fondo">
+    
     <?php
+
     $bd = mysqli_connect("localhost", "root", "", "varlud");
     $query1 = mysqli_query($bd, "SELECT ID_encuesta FROM encuestas ORDER BY ID_encuesta DESC LIMIT 3;");
     $i = 0;
@@ -81,7 +74,7 @@
 
     ?>
     <article style="display: flex; flex-wrap: wrap; height: 100%; margin-top: 0%;">
-        <div id="izq" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: yellow; border-radius: 25px;">
+        <div id="izq" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: yellow; border-radius: 25px;" class="form">
             <h1><?php echo $nom1; ?></h1><br>
             <br>
             <p><?php echo $emp1; ?></p><br>
@@ -92,8 +85,8 @@
                 <input type="submit" value="Responder">
             </form>
         </div>
-        <div id="cen" style="margin-left: 10% ; margin-top : 15%; height: 45%; width : 20%; background-color: lightgreen;border-radius: 25px;">
-            <p><?php echo $nom2; ?></p><br>
+        <div id="cen" style="margin-left: 10% ; margin-top : 15%; height: 45%; width : 20%; background-color: lightgreen;border-radius: 25px;" class="form">
+            <h1><?php echo $nom2; ?></h1><br>
             <br>
             <p><?php echo $emp2; ?></p><br>
             <br>
@@ -103,8 +96,8 @@
                 <input type="submit" value="Responder">
             </form>
         </div>
-        <div id="der" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: #e96a6a;border-radius: 25px;">
-            <p><?php echo $nom3; ?></p><br>
+        <div id="der" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: #e96a6a;border-radius: 25px;" class="form">
+            <h1><?php echo $nom3; ?></h1><br>
             <br>
             <p><?php echo $emp3; ?></p><br>
             <br>

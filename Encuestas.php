@@ -6,10 +6,14 @@
     <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
     <link rel="stylesheet" href="CSS\estilos.css">
 </head>
-
+<?php
+include 'encabezado.php';
+?>
 <body class="body_ses">
     <article>
     <?php
+
+
     $bd = mysqli_connect("localhost", "root", "", "varlud");
     $query = mysqli_query($bd, "SELECT * FROM encuestas");
     foreach ($query as $dato) {

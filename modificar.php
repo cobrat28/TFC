@@ -40,7 +40,7 @@
         <br>
         <input type="submit" value="Iniciar sesión">
     </form>
-<a href='Pagina_principal.php'> Inicio. </a>
+<a href='Pagina_principal.php' class="form9"> Inicio. </a>
 
 <?php } else{
     header("Location: login.html");
