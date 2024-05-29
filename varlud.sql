@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-05-2024 a las 22:25:15
+-- Tiempo de generación: 29-05-2024 a las 19:13:56
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -57,7 +57,10 @@ CREATE TABLE `encuestas` (
 
 INSERT INTO `encuestas` (`ID_encuesta`, `CIF`, `nombre`) VALUES
 (141, 'Q87654321', 'Gestión de redes'),
-(142, 'Q87654321', 'prueba');
+(142, 'Q87654321', 'prueba'),
+(143, 'Q87654321', 'Pito doble'),
+(144, 'Q87654321', 'Pito triple'),
+(145, 'Q87654321', 'Prueba textos');
 
 -- --------------------------------------------------------
 
@@ -106,7 +109,9 @@ INSERT INTO `op_check` (`ID_op_chk`, `ID_pregunta`, `valor`) VALUES
 (21, 351, 'FireWall.'),
 (22, 351, 'Puntos de acceso inalámbricos (AP)'),
 (23, 351, 'Servidores de seguridad.'),
-(24, 351, 'Dispositivos de almacenamiento en red (NAS)');
+(24, 351, 'Dispositivos de almacenamiento en red (NAS)'),
+(37, 379, 'Ketchup'),
+(38, 379, 'Mostaza');
 
 -- --------------------------------------------------------
 
@@ -141,7 +146,9 @@ INSERT INTO `op_radio` (`ID_op_rad`, `ID_pregunta`, `valor`) VALUES
 (78, 354, 'Gama de servicios y funcionalidades disponibles.'),
 (79, 354, 'Flexibilidad para adaptarse a las necesidades específicas de la empresa.'),
 (95, 377, 'Si '),
-(96, 377, 'No');
+(96, 377, 'No'),
+(97, 380, 'SOY VEGANO'),
+(98, 380, 'Nah flaco, dame un chuletón');
 
 -- --------------------------------------------------------
 
@@ -169,7 +176,10 @@ INSERT INTO `op_select` (`ID_op_sel`, `ID_pregunta`, `valor`) VALUES
 (21, 352, 'Importante'),
 (22, 352, 'Neutral'),
 (23, 352, 'Poco imporante'),
-(24, 352, 'Me la pela');
+(24, 352, 'Me la pela'),
+(35, 382, 'Real'),
+(36, 382, 'Madrid'),
+(37, 382, 'CF');
 
 -- --------------------------------------------------------
 
@@ -200,7 +210,20 @@ INSERT INTO `preguntas` (`ID_pregunta`, `ID_encuesta`, `tipo`, `texto`) VALUES
 (354, 141, 'rad', '¿Cuál es el principal criterio que consideras al seleccionar un proveedor de servicios de gestión de red?'),
 (355, 141, 'tex', '¿Qué mejoras o actualizaciones te gustaria ver en los servicios de gestión de redes que actualmente utilices?'),
 (376, 142, 'tex', 'Prueba 1'),
-(377, 142, 'rad', 'Prueba 2');
+(377, 142, 'rad', 'Prueba 2'),
+(378, 143, 'tex', 'Salchipapa'),
+(379, 143, 'che', 'Perrito'),
+(380, 143, 'rad', 'SOS VEGANO?'),
+(381, 143, 'tex', 'Chorrada'),
+(382, 143, 'sel', 'De que equipo sos?'),
+(383, 144, 'tex', 'Fedelobo'),
+(384, 144, 'tex', 'Hola chata como estás'),
+(385, 144, 'tex', 'Fedelobo'),
+(386, 144, 'tex', 'Hola chata como estás'),
+(387, 145, 'tex', 'Prueba texto 1'),
+(388, 145, 'tex', 'Prueba texto 2'),
+(389, 145, 'tex', 'Prueba texto 1'),
+(390, 145, 'tex', 'Prueba texto 2');
 
 -- --------------------------------------------------------
 
@@ -332,31 +355,31 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  MODIFY `ID_encuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `ID_encuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT de la tabla `op_check`
 --
 ALTER TABLE `op_check`
-  MODIFY `ID_op_chk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `ID_op_chk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `op_radio`
 --
 ALTER TABLE `op_radio`
-  MODIFY `ID_op_rad` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `ID_op_rad` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT de la tabla `op_select`
 --
 ALTER TABLE `op_select`
-  MODIFY `ID_op_sel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `ID_op_sel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `ID_pregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=378;
+  MODIFY `ID_pregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=391;
 
 --
 -- AUTO_INCREMENT de la tabla `respuestas`
