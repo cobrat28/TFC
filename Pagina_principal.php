@@ -17,7 +17,7 @@
             <p><a href="Encuestas.php">Encuestas</a></p>
         </div>
         <div class="tres">
-            <p><a href="https://google.com">Empresas</a></p>
+            <p><a href="empresa.php">Empresas</a></p>
         </div>
         <div class="cuatro">
             <p><a href="perfil.php">Mi Perfil</a></p>
