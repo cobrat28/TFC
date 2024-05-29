@@ -23,7 +23,7 @@ if(isset($_SESSION["DNI"])){
         }
     $query2=mysqli_query($bd,"SELECT * FROM empresas WHERE CIF='$cif'");
     $query3=mysqli_query($bd,"SELECT count(ID_respuesta) as 'respuestas' FROM respuestas WHERE DNI='$dni' GROUP BY DNI");
-    $query4=mysqli_query($bd,"SELECT count(distinct(ID_respuesta)) as 'encuestas' FROM respuestas WHERE DNI='$dni' GROUP BY ID_encuesta");
+    $query4=mysqli_query($bd,"SELECT count(distinct(ID_encuesta)) as 'encuestas' FROM respuestas WHERE DNI='$dni'");
     $pre=0;
     $enc=0;
     foreach ($query2 as $dato2){

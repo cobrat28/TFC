@@ -15,10 +15,27 @@ include 'encabezado.php';
 ?>
 
 <body class="fondo">
-    
+
     <?php
 
     $bd = mysqli_connect("localhost", "root", "", "varlud");
+    //borrado de encuestas sin preguntas
+    $sel = mysqli_query($bd, "SELECT * FROM encuestas");
+    foreach ($sel as $data) {
+        $id_borr = $data["ID_encuesta"];
+        $sel2 = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_encuesta=$id_borr");
+        if (mysqli_num_rows($sel2) < 1) {
+            //mysqli_close($bd);
+            //$bd = mysqli_connect("localhost", "root", "", "varlud");
+            $sel_borr = "DELETE FROM encuestas WHERE ID_encuesta = $id_borr";
+            echo $sel_borr;
+            mysqli_query($bd, $sel_borr);
+            //mysqli_close($bd);
+            //$bd = mysqli_connect("localhost", "root", "", "varlud");
+
+        } else {
+        }
+    }
     $query1 = mysqli_query($bd, "SELECT ID_encuesta FROM encuestas ORDER BY ID_encuesta DESC LIMIT 3;");
     $i = 0;
     $arr = [];
@@ -80,7 +97,7 @@ include 'encabezado.php';
             <p><?php echo $emp1; ?></p><br>
             <br>
             <p><?php echo $pre1; ?></p>
-            <form action = "responder.php">
+            <form action="responder.php">
                 <input type="hidden" value="<?php echo $arr[0] ?>" name="id_enc">
                 <input type="submit" value="Responder">
             </form>
@@ -91,7 +108,7 @@ include 'encabezado.php';
             <p><?php echo $emp2; ?></p><br>
             <br>
             <p><?php echo $pre2; ?></p>
-            <form action = "responder.php">
+            <form action="responder.php">
                 <input type="hidden" value="<?php echo $arr[1] ?>" name="id_enc">
                 <input type="submit" value="Responder">
             </form>
@@ -102,7 +119,7 @@ include 'encabezado.php';
             <p><?php echo $emp3; ?></p><br>
             <br>
             <p><?php echo $pre3; ?></p>
-            <form action = "responder.php">
+            <form action="responder.php">
                 <input type="hidden" value="<?php echo $arr[2] ?>" name="id_enc">
                 <input type="submit" value="Responder">
             </form>

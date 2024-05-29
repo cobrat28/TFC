@@ -93,13 +93,13 @@ if (isset($_SESSION["DNI"])) {
                 //var_dump($ans);
                 echo "<div class='form12'><h2>" . $txt . "</h2>";
                 echo "<h3>" . $ans_imp  . "</h3></div><br>";
-                //$query2 = "INSERT INTO respuestas VALUES (DEFAULT, $id_preg, $id_enc, '$dni', '$ans_imp')";
+                $query2 = "INSERT INTO respuestas VALUES (DEFAULT, $id_preg, $id_enc, '$dni', '$ans_imp')";
             } else {
                 echo "<div class='form12'><h2>" . $txt . "</h2>";
                 echo "<h3>" . $ans  . "</h3></div><br>";
-                //$query2 = "INSERT INTO respuestas VALUES (DEFAULT, $id_preg, $id_enc, '$dni', '$ans')";
+                $query2 = "INSERT INTO respuestas VALUES (DEFAULT, $id_preg, $id_enc, '$dni', '$ans')";
             }
-            //mysqli_query($bd, $query2);
+            mysqli_query($bd, $query2);
             $i++;
         }
         echo "<form action = 'Pagina_principal.php'><input type = 'submit' value='Volver a la página principal.'></form>";
