@@ -59,6 +59,7 @@ include 'encabezado.php';
             </div>
         <?php
         }
+        echo "<a href='opciones_encuestas.php'> Pulsa aquí para crear una encuesta. </a><br>";
 
         ?>
     </article>

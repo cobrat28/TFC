@@ -46,7 +46,7 @@ if(isset($_SESSION["DNI"])){
             echo "Encuestas respondidas: $enc <br>";
             echo "Preguntas respondidas: $pre <br>";    
             echo "<a href='modificar.php'> Pulsa aquí para modificar tus datos. </a><br>";
-            echo "<a href='opciones_encuestas.php'> Pulsa aquí para crear una encuesta. </a><br>";
+            echo "<a href='resultados.php'> Pulsa aquí para ver resultados de tus encuestas. </a><br>";
             echo "<a href='logout.php'> Cerrar sesión. </a>";
         ?>
     </div>
