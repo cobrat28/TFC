@@ -90,7 +90,7 @@ include 'encabezado.php';
     }
 
     ?>
-    <article style="display: flex; flex-wrap: wrap; height: 100%; margin-top: 0%;">
+    <article style="display: flex; flex-wrap: wrap; height: 100%; margin-top: 150px;">
         <div id="izq" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: yellow; border-radius: 25px;" class="form">
             <h1><?php echo $nom1; ?></h1><br>
             <br>

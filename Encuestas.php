@@ -10,7 +10,7 @@
 include 'encabezado.php';
 ?>
 
-<body class="body_ses">
+<body class="body_emp">
     <article>
         <?php
         $bd = mysqli_connect("localhost", "root", "", "varlud");

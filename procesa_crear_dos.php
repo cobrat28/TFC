@@ -6,7 +6,7 @@
     <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
     <link rel="stylesheet" href="CSS\estilos.css">
 </head>
-<body class="body_print">
+<body class="body_reg">
 <?php
 session_start();
 if (isset($_SESSION["admin"])) {
@@ -30,7 +30,7 @@ if (isset($_SESSION["admin"])) {
             mysqli_query($bd, $pru);
             //el echo de abajo, <p><?php echo $txt </p>, es para ver la pregunta
 ?>
-            <form action="" method="POST" class="form4">
+            <form action="" method="POST" class="form13">
                 <p><?php echo $txt ?></p>
                 <input type="hidden" name="<?php echo 'preg' . $i; ?>" value="<?php echo $txt ?>">
                 <input type="hidden" name="<?php echo 'cant' . $i; ?>" value="<?php echo $cant ?>">
