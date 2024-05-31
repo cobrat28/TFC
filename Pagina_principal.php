@@ -25,13 +25,12 @@ include 'encabezado.php';
         $id_borr = $data["ID_encuesta"];
         $sel2 = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_encuesta=$id_borr");
         if (mysqli_num_rows($sel2) < 1) {
-            //mysqli_close($bd);
-            //$bd = mysqli_connect("localhost", "user","password", "varlud");
+            mysqli_close($bd);
+            $bd = mysqli_connect("localhost", "root","", "varlud");
             $sel_borr = "DELETE FROM encuestas WHERE ID_encuesta = $id_borr";
-            echo $sel_borr;
             mysqli_query($bd, $sel_borr);
-            //mysqli_close($bd);
-            //$bd = mysqli_connect("localhost", "user","password", "varlud");
+            mysqli_close($bd);
+            $bd = mysqli_connect("localhost", "user","password", "varlud");
 
         } else {
         }

@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE USER 'user' IDENTIFIED BY 'password';
-GRANT SELECT, INSERT, UPDATE ON . TO 'user';
+GRANT SELECT, INSERT, UPDATE ON *.* TO 'user';
 
 
 --
