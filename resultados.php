@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VarLud Analytics</title>
+    <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
+    <link rel="stylesheet" href="CSS\estilos.css">
+</head>
+<body class="body_print">
 <?php
 session_start();
 if (isset($_SESSION["admin"])) {
@@ -50,3 +59,6 @@ if (isset($_SESSION["admin"])) {
 } else {
     header("Location: pagina_principal.php");
 }
+?>
+</body>
+</html>

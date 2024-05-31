@@ -13,7 +13,7 @@ include 'encabezado.php';
 <body class="body_emp">
     <article>
         <?php
-        $bd = mysqli_connect("localhost", "root", "", "varlud");
+        $bd = mysqli_connect("localhost", "user","password", "varlud");
         //borrado de encuestas sin preguntas
 
         $sel = mysqli_query($bd, "SELECT * FROM encuestas");
@@ -22,12 +22,12 @@ include 'encabezado.php';
             $sel2 = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_encuesta=$id_borr");
             if (mysqli_num_rows($sel2) < 1) {
                 //mysqli_close($bd);
-                //$bd = mysqli_connect("localhost", "root", "", "varlud");
+                //$bd = mysqli_connect("localhost", "user","password", "varlud");
                 $sel_borr = "DELETE FROM encuestas WHERE ID_encuesta = $id_borr";
                 echo $sel_borr;
                 mysqli_query($bd, $sel_borr);
                 //mysqli_close($bd);
-                //$bd = mysqli_connect("localhost", "root", "", "varlud");
+                //$bd = mysqli_connect("localhost", "user","password", "varlud");
 
             } else {
             }

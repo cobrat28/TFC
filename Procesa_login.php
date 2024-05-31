@@ -1,7 +1,7 @@
 <?php
     
 if(isset($_POST["email"]) && isset($_POST["passwd"])) {
-    $bd = mysqli_connect("localhost", "root", "", "varlud");
+    $bd = mysqli_connect("localhost", "user","password", "varlud");
     $email = $_POST["email"];
     $passwd = $_POST["passwd"];
     $query = mysqli_query($bd, "SELECT * FROM login WHERE correo='$email'");

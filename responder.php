@@ -11,7 +11,7 @@
 session_start();
 if (isset($_SESSION["DNI"])) {
     $dni = $_SESSION["DNI"];
-    $bd = mysqli_connect("localhost", "root", "", "varlud");
+    $bd = mysqli_connect("localhost", "user","password", "varlud");
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo "<form action='' method='POST' class='form11'>";
         $id_enc = $_GET["id_enc"];

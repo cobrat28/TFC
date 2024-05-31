@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     <?php
     }else{
 
-        $bd1=mysqli_connect("localhost", "root", "", "varlud");
+        $bd1=mysqli_connect("localhost", "user","password", "varlud");
         $nombre=$_POST["nombre"];
         $ape=$_POST["ape"];
         $dni=$_POST["dni"];

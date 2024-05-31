@@ -16,7 +16,7 @@ if(isset($_SESSION["admin"])){
     $nom = $_POST["nombre"];
     $_SESSION["cant_preg"] = $_POST["preg"];
     $_SESSION["cont"] = 1;
-    $bd = mysqli_connect("localhost", "root", "", "varlud");
+    $bd = mysqli_connect("localhost", "user","password", "varlud");
     mysqli_query($bd, "INSERT INTO encuestas VALUES (DEFAULT, '$cif', '$nom')");
     $query = mysqli_query($bd, "SELECT MAX(ID_encuesta) as 'id' FROM encuestas");
         foreach ($query as $data){
