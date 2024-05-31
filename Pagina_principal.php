@@ -17,8 +17,8 @@ include 'encabezado.php';
 <body class="fondo">
 
     <?php
-
-    $bd = mysqli_connect("localhost", "user","password", "varlud");
+    session_start();
+    $bd=mysqli_connect("localhost", "root","", "varlud");
     //borrado de encuestas sin preguntas
     $sel = mysqli_query($bd, "SELECT * FROM encuestas");
     foreach ($sel as $data) {

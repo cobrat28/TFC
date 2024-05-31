@@ -24,14 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Creación de usuario 'user' con privilegios 
---
-
-CREATE USER 'user' IDENTIFIED BY 'password';
-GRANT SELECT, INSERT, UPDATE ON *.* TO 'user';
-
-
---
 -- Estructura de tabla para la tabla `empresas`
 --
 

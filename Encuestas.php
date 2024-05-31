@@ -13,7 +13,7 @@ include 'encabezado.php';
 <body class="body_emp">
     <article>
         <?php
-        $bd = mysqli_connect("localhost", "user","password", "varlud");
+        $bd = mysqli_connect("localhost", "root", "", "varlud");
         //borrado de encuestas sin preguntas
 
         $sel = mysqli_query($bd, "SELECT * FROM encuestas");

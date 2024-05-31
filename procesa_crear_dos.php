@@ -10,7 +10,7 @@
 <?php
 session_start();
 if (isset($_SESSION["admin"])) {
-    $bd = mysqli_connect("localhost", "user","password", "varlud");
+    $bd=mysqli_connect("localhost", "root","", "varlud");
     $id_enc = $_SESSION["ID_encuesta"];
     //where max(ID_pregunta)
     if ($_SERVER["REQUEST_METHOD"] == "GET") {

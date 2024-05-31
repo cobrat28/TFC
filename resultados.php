@@ -11,7 +11,7 @@
 session_start();
 if (isset($_SESSION["admin"])) {
     $cif = $_SESSION["CIF"];
-    $bd = mysqli_connect("localhost", "user", "password", "varlud");
+    $bd=mysqli_connect("localhost", "root","", "varlud");
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo "<form action=perfil.php>";
         echo "<input type='submit' value='Volver'>";

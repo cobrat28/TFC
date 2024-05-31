@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$bd=mysqli_connect("localhost", "user","password", "varlud");
+$bd=mysqli_connect("localhost", "root","", "varlud");
 if (isset($_POST["nombre"], $_POST["ape"], $_POST["correo"], $_POST["cif"], $_SESSION["DNI"])) {
     $nombre=$_POST["nombre"];
     $apellidos=$_POST["ape"];
