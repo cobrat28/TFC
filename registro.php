@@ -5,6 +5,61 @@
 <title>VarLud Analytics</title>
     <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
     <link rel="stylesheet" href="CSS\estilos.css">
+    <script>
+        function validarFormulario() {
+            const nombre = document.getElementById('nombre').value;
+            const ape = document.getElementById('ape').value;
+            const dni = document.getElementById('dni').value;
+            const fec_nac = new Date(document.getElementById('fec_nac').value);
+            const cif = document.getElementById('cif').value;
+            const email = document.getElementById('email').value;
+            const passwd = document.getElementById('passwd').value;
+
+            const hoy = new Date();
+            const edad = hoy.getFullYear() - fec_nac.getFullYear();
+            const mes = hoy.getMonth() - fec_nac.getMonth();
+            if (edad > 100) {
+                alert("La edad no puede ser mayor de 100 años.");
+                return false;
+            }
+
+            if (!/^[a-zA-Z]+$/.test(nombre)) {
+                alert("El nombre no puede contener números.");
+                return false;
+            }
+
+            if (!/^[a-zA-Z]+$/.test(ape)) {
+                alert("El apellido no puede contener números.");
+                return false;
+            }
+
+            const dniRegex = /^[0-9]{8}[A-Za-z]$/;
+            if (!dniRegex.test(dni)) {
+                alert("El DNI debe tener 8 números seguidos de una letra.");
+                return false;
+            }
+
+            const cifRegex = /^[0-9]{8}[A-Za-z]$/;
+            if (!cifRegex.test(cif)) {
+                alert("El CIF debe tener una letra seguida de 8 números.");
+                return false;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("La dirección de email no es válida.");
+                return false;
+            }
+
+            const passwdRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            if (!passwdRegex.test(passwd)) {
+                alert("La contraseña debe tener al menos 8 caracteres, incluir al menos una letra y un número.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </head>
 <body class="body_reg">
 <?php
@@ -15,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
     <h1 class="form3">Bienvenido a VarLud Analytics.</h1>
     <!--formulario con todos los datos para la tabla, se vendrá al registro por GET, y al enviar el formulario, ya se énviará a la página principal-->
-    <form action="" method="POST" class="form">
+    <form action="" method="POST" class="form" onsubmit="return validarFormulario()">
         <h2>Por favor introduce tus datos</h2>
         <div>
             <label for="nombre">Nombre:</label>
