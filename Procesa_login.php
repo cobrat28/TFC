@@ -17,11 +17,19 @@ if(isset($_POST["email"]) && isset($_POST["passwd"])) {
                 $_SESSION["correo"] = $dato["correo"];
             }
             $query2 = mysqli_query($bd, "SELECT * FROM usuarios WHERE correo='{$_SESSION['correo']}'");
-
+            
             foreach ($query2 as $dato2) {
                 $_SESSION["DNI"] = $dato2["DNI"];
+                $dni = $dato2["DNI"];
                 $_SESSION["CIF"] = $dato2["CIF"];
             }
+            $query3 = mysqli_query($bd, "SELECT * FROM usuarios WHERE DNI='$dni'");
+            foreach ($query3 as $data) {
+                $admin = $data["admin"];
+            }
+            if ($admin == 1) {
+                $_SESSION["admin"] = 1;}
+            
             header("Location: pagina_principal.php");
         }else {
             header("Location: login.html");
