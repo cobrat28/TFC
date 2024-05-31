@@ -75,13 +75,7 @@ if (isset($_SESSION["admin"])) {
                         $id = $data["ID_pregunta"];
                         $tipo = $data["tipo"];
                     }
-                    /*
-                    echo "<br>";
-                    echo $id;
-                    echo "<br>";
-                    echo $tipo;
-                    echo "<br>";
-                    */
+                    
                     if ($tipo == 'rad') {
                         $tabla = 'op_radio';
                     } elseif ($tipo == 'che') {
@@ -91,20 +85,16 @@ if (isset($_SESSION["admin"])) {
                     } else {
                         break;
                     }
-                    //echo $tabla;
-                    //echo "<br>";
+
                     $query2 = "INSERT INTO $tabla VALUES (DEFAULT, $id, '$txt')";
-                    //echo $query2;
-                    
                     mysqli_query($bd, $query2);
                 }
             }else {
                 echo "No has introducido ningún valor";
             }
-            //echo $preg . "<br>";
         }
         ?>
-         <form action="Pagina_principal.php" method="POST">
+         <form action="pagina_principal.php" method="POST">
                 <br><input type="submit" value="Volver a la página principal.">
             </form>
             </div>

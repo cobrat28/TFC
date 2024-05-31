@@ -71,12 +71,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     }else{
 
     }
-    mysqli_query($bd1, "INSERT INTO Login (correo, contraseña) values ('$correo', '$passwd')");
+    mysqli_query($bd1, "INSERT INTO login (correo, contraseña) values ('$correo', '$passwd')");
 
-    mysqli_query($bd1, "INSERT INTO Usuarios (nombre, apellidos, fecha_nac, correo, DNI, CIF)
+    mysqli_query($bd1, "INSERT INTO usuarios (nombre, apellidos, fecha_nac, correo, DNI, CIF)
     VALUES ('$nombre', '$ape', '$fec_nac', '$correo', '$dni', '$cif')");
 
-    header("Location: Pagina_principal.php");
+    header("Location: pagina_principal.php");
     }
     ?>
 </body>

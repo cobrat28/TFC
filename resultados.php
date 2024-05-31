@@ -4,6 +4,10 @@ if (isset($_SESSION["admin"])) {
     $cif = $_SESSION["CIF"];
     $bd = mysqli_connect("localhost", "root", "", "varlud");
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        echo "<form action=perfil.php>";
+        echo "<input type='submit' value='Volver'>";
+        echo "</form>";
+        echo "";
         echo "<h1 class=''> Aquí tienes tus encuestas, revisa los resultados </h1>";
         $query = mysqli_query($bd, "SELECT * FROM encuestas WHERE CIF='$cif'");
         foreach ($query as $data) {
@@ -14,11 +18,15 @@ if (isset($_SESSION["admin"])) {
             echo "<h1>" . $nom . "</h1>";
             echo "<h2>" . $id . "</h2>";
             echo "<input type='hidden' name='id' value=" . $id . ">";
-            echo "<input type='hidden' name='nom' value=" . $nom . ">";
+            echo "<input type='hidden' name='nom' value='" . $nom . "'>";
             echo "<input type='submit' value='Revisar'>";
             echo "</form>";
             echo "</div>";
         }
+        echo "";
+        echo "<form action=perfil.php>";
+        echo "<input type='submit' value='Volver'>";
+        echo "</form>";
     } else {
         $id_enc = $_POST["id"];
         $nom = $_POST["nom"];
@@ -34,7 +42,11 @@ if (isset($_SESSION["admin"])) {
                 echo "$res <br>";
             }
         }
+        echo "";
+        echo "<form action='' method='GET'>";
+        echo "<input type='submit' value='Volver'>";
+        echo "</form>";
     }
 } else {
-    header("Location: Pagina_principal.php");
+    header("Location: pagina_principal.php");
 }
