@@ -102,7 +102,7 @@ if (isset($_SESSION["DNI"])) {
             mysqli_query($bd, $query2);
             $i++;
         }
-        echo "<form action = 'pagina_principal.php'><input type = 'submit' value='Volver a la página principal.'></form>";
+        echo "<form action = 'pagina_principal.php' style='height: 100px'><input type = 'submit' value='Volver a la página principal.'></form>";
     }
 } else {
     //No hay usuario registrado
