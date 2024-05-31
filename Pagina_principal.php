@@ -91,12 +91,12 @@ include 'encabezado.php';
 
     ?>
     <article style="display: flex; flex-wrap: wrap; height: 100%; margin-top: 150px;">
-        <div id="izq" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: yellow; border-radius: 25px;" class="form">
+        <div id="izq" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: rgb(238, 235, 48); border-radius: 25px;" class="form">
             <h1><?php echo $nom1; ?></h1><br>
             <br>
-            <p><?php echo $emp1; ?></p><br>
+            <p><?php echo "<b>Empresa:</b> ". $emp1; ?></p><br>
             <br>
-            <p><?php echo $pre1; ?></p>
+            <p><?php echo "<b>Preguntas:</b> " . $pre1; ?></p>
             <form action="responder.php">
                 <input type="hidden" value="<?php echo $arr[0] ?>" name="id_enc">
                 <input type="submit" value="Responder">
@@ -105,9 +105,9 @@ include 'encabezado.php';
         <div id="cen" style="margin-left: 10% ; margin-top : 15%; height: 45%; width : 20%; background-color: lightgreen;border-radius: 25px;" class="form">
             <h1><?php echo $nom2; ?></h1><br>
             <br>
-            <p><?php echo $emp2; ?></p><br>
+            <p><?php echo "<b>Empresa:</b> ". $emp2; ?></p><br>
             <br>
-            <p><?php echo $pre2; ?></p>
+            <p><?php echo "<b>Preguntas:</b> " . $pre2; ?></p>
             <form action="responder.php">
                 <input type="hidden" value="<?php echo $arr[1] ?>" name="id_enc">
                 <input type="submit" value="Responder">
@@ -116,9 +116,9 @@ include 'encabezado.php';
         <div id="der" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: #e96a6a;border-radius: 25px;" class="form">
             <h1><?php echo $nom3; ?></h1><br>
             <br>
-            <p><?php echo $emp3; ?></p><br>
+            <p><?php echo "<b>Empresa:</b> ". $emp3; ?></p><br>
             <br>
-            <p><?php echo $pre3; ?></p>
+            <p><?php echo "<b>Preguntas:</b> " . $pre3; ?></p>
             <form action="responder.php">
                 <input type="hidden" value="<?php echo $arr[2] ?>" name="id_enc">
                 <input type="submit" value="Responder">
