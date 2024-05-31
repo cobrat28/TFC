@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-05-2024 a las 19:13:56
+-- Tiempo de generación: 31-05-2024 a las 19:09:38
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -216,8 +216,6 @@ INSERT INTO `preguntas` (`ID_pregunta`, `ID_encuesta`, `tipo`, `texto`) VALUES
 (380, 143, 'rad', 'SOS VEGANO?'),
 (381, 143, 'tex', 'Chorrada'),
 (382, 143, 'sel', 'De que equipo sos?'),
-(383, 144, 'tex', 'Fedelobo'),
-(384, 144, 'tex', 'Hola chata como estás'),
 (385, 144, 'tex', 'Fedelobo'),
 (386, 144, 'tex', 'Hola chata como estás'),
 (387, 145, 'tex', 'Prueba texto 1'),
@@ -253,7 +251,15 @@ INSERT INTO `respuestas` (`ID_respuesta`, `ID_pregunta`, `ID_encuesta`, `DNI`, `
 (50, 352, 141, '12345678Q', 'Me la pela'),
 (51, 353, 141, '12345678Q', 'pito doble'),
 (52, 354, 141, '12345678Q', 'Costo de los servicios'),
-(53, 355, 141, '12345678Q', 'Pito triple');
+(53, 355, 141, '12345678Q', 'Pito triple'),
+(54, 376, 142, '12345678Q', 'Pito'),
+(55, 377, 142, '12345678Q', 'Si '),
+(56, 387, 145, '12345678Q', 'Pito'),
+(57, 388, 145, '12345678Q', 'Pito doble'),
+(58, 389, 145, '12345678Q', 'Pito triple'),
+(59, 390, 145, '12345678Q', 'Pito meteórico'),
+(60, 376, 142, '12345678Q', 'Pito'),
+(61, 377, 142, '12345678Q', 'No');
 
 -- --------------------------------------------------------
 
@@ -355,7 +361,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  MODIFY `ID_encuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `ID_encuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
 
 --
 -- AUTO_INCREMENT de la tabla `op_check`
@@ -385,7 +391,7 @@ ALTER TABLE `preguntas`
 -- AUTO_INCREMENT de la tabla `respuestas`
 --
 ALTER TABLE `respuestas`
-  MODIFY `ID_respuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `ID_respuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- Restricciones para tablas volcadas
