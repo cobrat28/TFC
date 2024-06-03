@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<!--Esta página muestra las encuestas que tiene cada empresa, están separadas por nombre de empresa y CIF como titulo resaltado-->
+<!--Esta página muestra las encuestas que tiene cada empresa, están separadas por nombre de empresa y CIF como titulo resaltado.
+Tienen un botón de redirección a responder para que el usuario pueda ubicar a que empresa pertenece cada encuesta y la pueda responder facilmente-->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
