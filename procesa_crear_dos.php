@@ -12,7 +12,6 @@ session_start();
 if (isset($_SESSION["admin"])) {
     $bd=mysqli_connect("localhost", "root","", "varlud");
     $id_enc = $_SESSION["ID_encuesta"];
-    //where max(ID_pregunta)
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $preg = $_SESSION["cant_preg"];
         $txt = 0;

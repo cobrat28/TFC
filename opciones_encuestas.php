@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!--Esta página es la encargada de recoger los primeros datos para empezar a crear la encuesta, siempre y cuando el usuario sea administrador.
+Siendo estos datos el nombre de la encuesta y el número de preguntas-->
 <html lang="es">
 
 <head>
@@ -28,6 +30,7 @@
             <input type="submit">
         </form>
     <?php
+    //En caso de que el usuario no sea administrador se le muestra un error junto a un botón para volver
     } else {
         echo "No estás autorizado, contacta con el administrador si se trata de un error";
         echo "";

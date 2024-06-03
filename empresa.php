@@ -26,7 +26,7 @@ foreach($query as $data){
     foreach($query2 as $data2){
         $cant = $data2["encuestas"];
     }
-    $query3 = mysqli_query($bd, "SELECT nombre, ID_encuesta FROM encuestas");
+    $query3 = mysqli_query($bd, "SELECT nombre, ID_encuesta FROM encuestas WHERE CIF ='$cif'");
     foreach($query3 as $data3){
         $id_enc = $data3["ID_encuesta"];
         $nom = $data3["nombre"];

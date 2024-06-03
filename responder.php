@@ -16,7 +16,8 @@ if (isset($_SESSION["DNI"])) {
         echo "<form action='' method='POST' class='form11'>";
         $id_enc = $_GET["id_enc"];
         $query = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_encuesta = $id_enc");
-        //este foreach es el principal, en el que vamos a sacar los id de preguntas, si es necesario se hará count para las correspondientes, si salen más o menos preguntas de la que son.
+        //este foreach es el principal, en el que vamos a sacar los id de preguntas, si es necesario se hará count para las correspondientes,
+        //si salen más o menos preguntas de la que son.
         $i = 0;
         foreach ($query as $preg) {
             $id_preg = $preg["ID_pregunta"];
@@ -77,7 +78,6 @@ if (isset($_SESSION["DNI"])) {
         $id_enc = $_POST["id_enc"];
         $query = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_encuesta = $id_enc");
         $i = 0;
-        //echo $cant;
         echo "<h1 class= 'form5'>Resumen de la encuesta:</h1><br>";
         echo "<br>";
         foreach ($query as $preg) {
@@ -85,12 +85,12 @@ if (isset($_SESSION["DNI"])) {
             $txt = $preg["texto"];
             $res = 'res' . $i;
             $ans = $_POST["$res"];
-            //hacemos eset if porque las opciones de tipo check se almacenan en un array, entonces las tenemos que descommponer.
+            //hacemos este if porque las opciones de tipo check se almacenan en un array, entonces las tenemos que descomponer.
             $chk = mysqli_query($bd, "SELECT tipo FROM preguntas WHERE ID_pregunta = $id_preg;");
             $type = mysqli_fetch_assoc($chk)["tipo"];
             if ($type == 'che') {
                 $ans_imp = implode(", ", $ans);
-                //var_dump($ans);
+
                 echo "<div class='form11'><h2>" . $txt . "</h2>";
                 echo "<h3>" . $ans_imp  . "</h3></div><br>";
                 $query2 = "INSERT INTO respuestas VALUES (DEFAULT, $id_preg, $id_enc, '$dni', '$ans_imp')";

@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!--Esta página muestra todas las encuestas disponibles con en nombre de la encuesta, el número de pregunta y la empresa propietaria, tienen un
+botón de responder para rellenarlas-->
 <html>
 
 <head>
@@ -21,19 +23,17 @@ include 'encabezado.php';
             $id_borr = $data["ID_encuesta"];
             $sel2 = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_encuesta=$id_borr");
             if (mysqli_num_rows($sel2) < 1) {
-                //mysqli_close($bd);
-                //$bd = mysqli_connect("localhost", "user","password", "varlud");
+
                 $sel_borr = "DELETE FROM encuestas WHERE ID_encuesta = $id_borr";
                 echo $sel_borr;
                 mysqli_query($bd, $sel_borr);
-                //mysqli_close($bd);
-                //$bd = mysqli_connect("localhost", "user","password", "varlud");
+
 
             } else {
             }
         }
 
-
+//Aquí se hace el recuento de las preguntas, el nombre de la empresa y el nombre de la encuesta
         $query = mysqli_query($bd, "SELECT * FROM encuestas");
         foreach ($query as $dato) {
             $nom = $dato["nombre"];
@@ -59,6 +59,7 @@ include 'encabezado.php';
             </div>
         <?php
         }
+//Este enlace es una redirección para llegar a la página de creación de encuestas. Solo los administradores pueden crearlas
         echo "<div style='text-align: center; height: 100px'><a href='opciones_encuestas.php'> Pulsa aquí para crear una encuesta. </a></div><br>";
 
         ?>

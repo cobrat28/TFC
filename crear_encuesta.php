@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!--Esta página es la intermediaria para crear definitivamente la encuesta, avisa al usuario de que se va a crear su encuesta
+junto con un botón de continuar para llegar a la parte final de la creación.-->
 <html lang="es">
 <head>
     <title>VarLud Analytics</title>

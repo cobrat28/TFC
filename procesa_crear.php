@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--Esta página es la encargada de recoger la pregunta que escoga el administrador, su tipo y la cantidad si es necesario.-->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -30,6 +31,7 @@
 </head>
 <body class="body_ses">
 <?php
+//Aqui está el formulario que contiene todas las opciones, la cantidad y la pregunta.
 session_start();
 if(isset($_SESSION["admin"])){
     if($_SERVER["REQUEST_METHOD"]=="GET"){
@@ -51,7 +53,7 @@ if(isset($_SESSION["admin"])){
             <?php
         }
         ?>
-        
+        <!--Este botón lleva al usuario a la parte final de la creación-->
         <input type="submit" value="Siguiente">
     </form>
     <?php
