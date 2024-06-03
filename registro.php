@@ -1,3 +1,6 @@
+<!--En esta página se le muestra al usuario un formulario para que se pueda registrar en nuestra web con los campos de
+nombre, apellidos, DNI, CIF de la empresa, Fecha de nacimiento, Email y contraseña-->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,6 +8,7 @@
 <title>VarLud Analytics</title>
     <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
     <link rel="stylesheet" href="CSS\estilos.css">
+    <!--Esta parte es para definir las restricciones como que el DNI tenga 8 números y una letra, que el nombre sean solo letras...-->
     <script>
         function validarFormulario() {
             const nombre = document.getElementById('nombre').value;
@@ -69,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     ?>
 
     <h1 class="form3">Bienvenido a VarLud Analytics.</h1>
-    <!--formulario con todos los datos para la tabla, se vendrá al registro por GET, y al enviar el formulario, ya se énviará a la página principal-->
+    <!--formulario con todos los datos para la tabla, se llegará al registro por GET, y al enviar el formulario, ya se énviará a la página principal-->
     <form action="" method="POST" class="form" onsubmit="return validarFormulario()">
         <h2>Por favor introduce tus datos</h2>
         <div>

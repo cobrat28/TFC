@@ -38,7 +38,7 @@ include 'encabezado.php';
     $query1 = mysqli_query($bd, "SELECT ID_encuesta FROM encuestas ORDER BY ID_encuesta DESC LIMIT 3;");
     $i = 0;
     $arr = [];
-    //Creamos un array, donde almacenaremos los 3 id_encuesta que toquen
+    //Creamos un array, donde almacenaremos los 3 id_encuesta de las últimas 3 encuestas registradas en nuestra web
     foreach ($query1 as $data) {
         $id = $data["ID_encuesta"];
         $arr[] = $id;
@@ -89,6 +89,8 @@ include 'encabezado.php';
     }
 
     ?>
+    <!--Aquí se ubicarán las encuestas, en este caso hemos implementado los estilos dentro de la página en vez de en el documento de estilos para
+    usar todo lo aprendido en clase-->
     <article style="display: flex; flex-wrap: wrap; height: 100%; margin-top: 150px;">
         <div id="izq" style="margin-left: 10% ; margin-top : 5%; height: 45%; width : 20%; background-color: rgb(238, 235, 48); border-radius: 25px;" class="form">
             <h1><?php echo $nom1; ?></h1><br>

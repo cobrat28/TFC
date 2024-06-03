@@ -1,3 +1,6 @@
+<!--Esta página muestra la información del perfil del usuario, dándole una bienvenida y mostrándole después su nombre y apellidos, su DNI, su empresa
+las encuestas que ha respondido, y las preguntas totales respondidas. Aparte muestra un enlace para modificar datos que redirige a la página de 
+modificación, otro que muestra los resultados de las encuestas pero solo a los administradores, y un último para cerrar sesión-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +13,7 @@
 <?php
 
 include 'encabezado.php';
-
+//Aquí se establece la conexión con la base de datos donde se extrae el usuario mediante el DNI para cargar su página de perfil
 session_start();
 if(isset($_SESSION["DNI"])){
     $bd=mysqli_connect("localhost", "root","", "varlud");
@@ -35,6 +38,7 @@ if(isset($_SESSION["DNI"])){
     foreach ($query4 as $dato4){
         $enc=$dato4["encuestas"];
         }
+    //Aguí se muestran los datos del usuario, los tres últimos campos son los enlaces para modificar, ver los datos de las encuestas y el de cerrar sesión
     echo "<h1 class='form5'>Hola $nombre, aquí tienes tus datos:</h1><br>";
     ?>
     <div class="form">
@@ -46,7 +50,7 @@ if(isset($_SESSION["DNI"])){
             echo "Encuestas respondidas: $enc <br>";
             echo "Preguntas respondidas: $pre <br>";    
             echo "<a href='modificar.php'> Pulsa aquí para modificar tus datos. </a><br>";
-            echo "<a href='resultados.php'> Pulsa aquí para ver resultados de tus encuestas. </a><br>";
+            echo "<a href='resultados.php'> Pulsa aquí para ver resultados de las encuestas (Solo administración). </a><br>";
             echo "<a href='logout.php'> Cerrar sesión. </a>";
         ?>
     </div>

@@ -55,7 +55,7 @@ if (isset($_SESSION["admin"])) {
         echo "</form>";
     }
 } else {
-    //header("Location: pagina_principal.php");
+    header("Location: pagina_principal.php");
 }
 ?>
 </body>

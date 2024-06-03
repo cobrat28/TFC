@@ -1,5 +1,6 @@
 <?php
-    
+ //En esta página es donde se comprueba que los datos introducidos concuerden en nuestra base de datos, en ese caso, el usuario
+ //pasa a la página principal y se le crea una sesión, en caso contrario se le devuelve a la página de login   
 if(isset($_POST["email"]) && isset($_POST["passwd"])) {
     $bd = mysqli_connect("localhost", "root","", "varlud");
     $email = $_POST["email"];
