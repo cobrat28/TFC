@@ -32,7 +32,7 @@ nombre, apellidos, DNI, CIF de la empresa, Fecha de nacimiento, Email y contrase
                 return false;
             }
 
-            if (!/^[a-zA-Z]+$/.test(ape)) {
+            if (!/^[a-z A-Z]+$/.test(ape)) {
                 alert("El apellido no puede contener números.");
                 return false;
             }
@@ -43,7 +43,7 @@ nombre, apellidos, DNI, CIF de la empresa, Fecha de nacimiento, Email y contrase
                 return false;
             }
 
-            const cifRegex = /^[0-9]{8}[A-Za-z]$/;
+            const cifRegex = /^[A-Za-z]{1}[0-9]{8}$/;
             if (!cifRegex.test(cif)) {
                 alert("El CIF debe tener una letra seguida de 8 números.");
                 return false;
