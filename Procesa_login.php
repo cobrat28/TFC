@@ -1,24 +1,25 @@
 <?php
- //En esta página es donde se comprueba que los datos introducidos concuerden en nuestra base de datos, en ese caso, el usuario
- //pasa a la página principal y se le crea una sesión, en caso contrario se le devuelve a la página de login   
-if(isset($_POST["email"]) && isset($_POST["passwd"])) {
-    $bd = mysqli_connect("localhost", "root","", "varlud");
+//En esta página es donde se comprueba que los datos introducidos concuerden en nuestra base de datos, en ese caso, el usuario
+//pasa a la página principal y se le crea una sesión, en caso contrario se le devuelve a la página de login   
+if (isset($_POST["email"]) && isset($_POST["passwd"])) {
+    $bd = mysqli_connect("localhost", "root", "", "varlud");
     $email = $_POST["email"];
     $passwd = $_POST["passwd"];
     $query = mysqli_query($bd, "SELECT * FROM login WHERE correo='$email'");
 
-    if(mysqli_num_rows($query) > 0) {
-        session_start();
+    session_start();
+    if (mysqli_num_rows($query) > 0) {
         foreach ($query as $dato) {
             $hashed = $dato["contraseña"];
         }
-        $iscorrect=password_verify($passwd, $hashed);
+        $iscorrect = password_verify($passwd, $hashed);
         if ($iscorrect) {
-           foreach ($query as $dato) {
+            unset($_SESSION["error"]);
+            foreach ($query as $dato) {
                 $_SESSION["correo"] = $dato["correo"];
             }
             $query2 = mysqli_query($bd, "SELECT * FROM usuarios WHERE correo='{$_SESSION['correo']}'");
-            
+
             foreach ($query2 as $dato2) {
                 $_SESSION["DNI"] = $dato2["DNI"];
                 $dni = $dato2["DNI"];
@@ -29,17 +30,20 @@ if(isset($_POST["email"]) && isset($_POST["passwd"])) {
                 $admin = $data["admin"];
             }
             if ($admin == 1) {
-                $_SESSION["admin"] = 1;}
-            
+                $_SESSION["admin"] = 1;
+            }
+
             header("Location: pagina_principal.php");
-        }else {
-            header("Location: login.html");
+        } else {
+            $_SESSION["error"] = 1;
+            header("Location: login.php");
+            exit();
         }
-        }
-   else {
-    header("Location: login.html");
-}     
+    } else {
+        $_SESSION["error"] = 1;
+        header("Location: login.php");
+        exit();
+    }
 } else {
-    header("Location: login.html");
+    header("Location: login.php");
 }
-?>

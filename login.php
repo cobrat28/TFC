@@ -5,13 +5,27 @@ introducidos en la base de datos, si to trae al usuario de vuelta a esta página
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>VarLud Analytics</title>
     <link rel="icon" type="image/jpg" href="Imagenes/Logo_solo.png">
     <link rel="stylesheet" href="CSS\estilos.css">
 </head>
+
 <body class="body_ses">
+    
+    <?php
+    session_start();
+    if (isset($_SESSION["error"])) {
+        ?>
+        <script>
+            alert("Creedenciales incorrectas, inténtelo de nuevo.");
+        
+    </script>
+    <?php
+    }
+    ?>
     <div class="form">
         <form action="procesa_login.php" method="POST">
             <h2>Iniciar sesión</h2>
@@ -26,8 +40,9 @@ introducidos en la base de datos, si to trae al usuario de vuelta a esta página
             <br>
             <input type="submit" value="Iniciar sesión">
         </form>
-<!--Este enlace es una redirección a la página de registro por si el usuario aún no está registrado en nuestra web-->
-        <p><a href="registro.php">Si no tienes usuario, pincha aquí para crearlo.</p>
+        <!--Este enlace es una redirección a la página de registro por si el usuario aún no está registrado en nuestra web-->
+        <p><a href="registro.php">Si no tienes usuario, pincha aquí para crearlo.</a></p>
     </div>
 </body>
+
 </html>
