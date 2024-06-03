@@ -91,11 +91,11 @@ if (isset($_SESSION["DNI"])) {
             if ($type == 'che') {
                 $ans_imp = implode(", ", $ans);
                 //var_dump($ans);
-                echo "<div class='form12'><h2>" . $txt . "</h2>";
+                echo "<div class='form11'><h2>" . $txt . "</h2>";
                 echo "<h3>" . $ans_imp  . "</h3></div><br>";
                 $query2 = "INSERT INTO respuestas VALUES (DEFAULT, $id_preg, $id_enc, '$dni', '$ans_imp')";
             } else {
-                echo "<div class='form12'><h2>" . $txt . "</h2>";
+                echo "<div class='form11'><h2>" . $txt . "</h2>";
                 echo "<h3>" . $ans  . "</h3></div><br>";
                 $query2 = "INSERT INTO respuestas VALUES (DEFAULT, $id_preg, $id_enc, '$dni', '$ans')";
             }

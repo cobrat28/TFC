@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!--Esta página nos muestra todas las encuestas que están alojadas en nuestra web. Se muestra el nombre de la encuesta, su id de encuesta y
+un botón de revisión por cada una. Cada una de ellas están separadas en su respectiva caja-->
 <html>
 
 <head>
@@ -8,6 +10,8 @@
 </head>
 <body class="body_print">
 <?php
+//Si la sesión es de un administrador y se llega a la página mediante GET deja acceder a la página y recupera las encuestas mediante el CIF de la empresa,
+//con un bucle muestra todas las encuestas
 session_start();
 if (isset($_SESSION["admin"])) {
     $cif = $_SESSION["CIF"];
@@ -33,6 +37,7 @@ if (isset($_SESSION["admin"])) {
         echo "<input type='submit' value='Volver'>";
         echo "</form>";
     } else {
+//Al llegar por POST te muestra los resultados de la encuesta elegida
         $id_enc = $_POST["id"];
         $nom = $_POST["nom"];
         echo "<h1 class='form3'>" . $nom . "</h1>";

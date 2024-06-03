@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--Esta página muestra las encuestas que tiene cada empresa, están separadas por nombre de empresa y CIF como titulo resaltado-->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
