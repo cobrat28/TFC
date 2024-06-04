@@ -106,7 +106,7 @@ if (isset($_SESSION["DNI"])) {
     }
 } else {
     //No hay usuario registrado
-    header("Location: login.php");
+    header("Location: index.php");
 }
 ?>
 </body>

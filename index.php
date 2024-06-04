@@ -20,7 +20,7 @@ introducidos en la base de datos, si to trae al usuario de vuelta a esta página
     if (isset($_SESSION["error"])) {
         ?>
         <script>
-            alert("Creedenciales incorrectas, inténtelo de nuevo.");
+            alert("Introduce un usuario registrado para iniciar sesión.");
         
     </script>
     <?php

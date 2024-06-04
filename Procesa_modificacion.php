@@ -15,5 +15,5 @@ if (isset($_POST["nombre"], $_POST["ape"], $_POST["correo"], $_POST["cif"], $_SE
     mysqli_query($bd, "UPDATE usuarios SET nombre = '$nombre', apellidos = '$apellidos', correo = '$correo', CIF = '$cif' WHERE DNI = '$dni'"); 
     header("location: perfil.php");
 }else{
-    header("location: login.php");
+    header("location: index.php");
 }

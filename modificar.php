@@ -51,7 +51,7 @@ de los campos de Nombre, Apellidos, CIF y correo, con un bot√≥n de iniciar sesi√
 <a href='Pagina_principal.php' class="form9"> Inicio. </a>
 
 <?php } else{
-    header("Location: login.php");
+    header("Location: index.php");
  } ?>
 </body>
 </html>

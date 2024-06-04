@@ -36,14 +36,14 @@ if (isset($_POST["email"]) && isset($_POST["passwd"])) {
             header("Location: pagina_principal.php");
         } else {
             $_SESSION["error"] = 1;
-            header("Location: login.php");
+            header("Location: index.php");
             exit();
         }
     } else {
         $_SESSION["error"] = 1;
-        header("Location: login.php");
+        header("Location: index.php");
         exit();
     }
 } else {
-    header("Location: login.php");
+    header("Location: index.php");
 }
