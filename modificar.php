@@ -25,7 +25,7 @@ de los campos de Nombre, Apellidos, CIF y correo, con un bot√≥n de iniciar sesi√
         }
 ?>
 <!--Aqu√≠ es donde se muestran los campos del formulario al usuario-->
-    <form action="Procesa_modificacion.php" method="POST" class="form4">
+    <form action="procesa_modificacion.php" method="POST" class="form4">
         <div>
             <label>Nombre:</label><br>
             <input type="text" name="nombre" value="<?php echo $nombre ?>">
@@ -48,7 +48,7 @@ de los campos de Nombre, Apellidos, CIF y correo, con un bot√≥n de iniciar sesi√
         <input type="submit" value="Actualizar">
     </form>
 
-<a href='Pagina_principal.php' class="form9"> Inicio. </a>
+<a href='pagina_principal.php' class="form9"> Inicio. </a>
 
 <?php } else{
     header("Location: index.php");

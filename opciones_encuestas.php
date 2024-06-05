@@ -34,7 +34,7 @@ Siendo estos datos el nombre de la encuesta y el número de preguntas-->
     } else {
         echo "No estás autorizado, contacta con el administrador si se trata de un error";
         echo "";
-        echo "<form action=encuestas.php>";
+        echo "<form action='encuestas.php'>";
         echo "<input type='submit' value='Volver'>";
         echo "</form>";
     }

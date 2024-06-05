@@ -60,7 +60,7 @@ include 'encabezado.php';
         <?php
         }
 //Este enlace es una redirección para llegar a la página de creación de encuestas. Solo los administradores pueden crearlas
-        echo "<div style='text-align: center; height: 100px'><a href='opciones_encuestas.php'> Pulsa aquí para crear una encuesta. </a></div><br>";
+        echo "<div style='text-align: center; height: 100px'><mark><a href='opciones_encuestas.php'> Pulsa aquí para crear una encuesta. </a></mark></div><br>";
 
         ?>
     </article>
