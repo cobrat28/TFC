@@ -16,7 +16,7 @@ Siendo estos datos el nombre de la encuesta y el número de preguntas-->
     session_start();
     $dni = $_SESSION["DNI"];
     $_SESSION["preg"] = 0;
-    $bd=mysqli_connect("localhost", "root","", "varlud");
+    $bd=mysqli_connect("localhost", "prueba","password", "varlud");
     $query = mysqli_query($bd, "SELECT * FROM usuarios WHERE DNI='$dni'");
     foreach ($query as $data) {
         $admin = $data["admin"];
