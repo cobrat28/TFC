@@ -22,11 +22,15 @@ include 'encabezado.php';
     //borrado de encuestas sin preguntas
     $sel = mysqli_query($bd, "SELECT * FROM encuestas");
     foreach ($sel as $data) {
+        mysqli_close($bd);
+        $bd = mysqli_connect("localhost", "admin_varlud", "1xo3)6DUNt6o9C7v", "varlud");
         $id_borr = $data["ID_encuesta"];
         $sel2 = mysqli_query($bd, "SELECT * FROM preguntas WHERE ID_encuesta=$id_borr");
         if (mysqli_num_rows($sel2) < 1) {
             $sel_borr = "DELETE FROM encuestas WHERE ID_encuesta = $id_borr";
             mysqli_query($bd, $sel_borr);
+            mysqli_close($bd);
+            $bd = mysqli_connect("localhost", "usu_varlud", "P@ssw0rd", "varlud");
         } else {
         }
     }
