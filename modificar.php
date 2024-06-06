@@ -14,7 +14,7 @@ de los campos de Nombre, Apellidos, CIF y correo, con un botón de iniciar sesi�
 //Aquí se hace la conexión a la base de datos donde se recuperan las filas que coincidan con el DNI del usuario
  session_start();
  if(isset($_SESSION["DNI"])){
-    $bd=mysqli_connect("localhost", "root","", "varlud");
+    $bd=mysqli_connect("localhost", "prueba","password", "varlud");
     $dni=$_SESSION["DNI"];
     $query1=mysqli_query($bd,"SELECT * FROM usuarios WHERE DNI='$dni'");
     foreach ($query1 as $dato1){
