@@ -16,7 +16,7 @@ include 'encabezado.php';
 
 <?php
 
-$bd = mysqli_connect("localhost", "root","", "varlud");
+$bd = mysqli_connect("localhost", "prueba","password", "varlud");
 $query = mysqli_query($bd, "SELECT * FROM empresas");
 foreach($query as $data){
     $emp = $data["nombre"];
