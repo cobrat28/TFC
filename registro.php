@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     <?php
     }else{
 
-        $bd1=mysqli_connect("localhost", "prueba","password", "varlud");
+        $bd1 = mysqli_connect("localhost", "usu_varlud", "P@ssw0rd", "varlud");
         $nombre=$_POST["nombre"];
         $ape=$_POST["ape"];
         $dni=$_POST["dni"];

@@ -15,7 +15,7 @@ un botón de revisión por cada una. Cada una de ellas están separadas en su re
 session_start();
 if (isset($_SESSION["admin"])) {
     $cif = $_SESSION["CIF"];
-    $bd=mysqli_connect("localhost", "prueba","password", "varlud");
+    $bd = mysqli_connect("localhost", "usu_varlud", "P@ssw0rd", "varlud");
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo "<h1 class='form3'> Aquí tienes tus encuestas, revisa los resultados </h1>";
         $query = mysqli_query($bd, "SELECT * FROM encuestas WHERE CIF='$cif'");

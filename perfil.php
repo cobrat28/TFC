@@ -16,7 +16,7 @@ include 'encabezado.php';
 //Aquí se establece la conexión con la base de datos donde se extrae el usuario mediante el DNI para cargar su página de perfil
 session_start();
 if(isset($_SESSION["DNI"])){
-    $bd=mysqli_connect("localhost", "prueba","password", "varlud");
+    $bd = mysqli_connect("localhost", "usu_varlud", "P@ssw0rd", "varlud");
     $dni=$_SESSION["DNI"];
     $query1=mysqli_query($bd,"SELECT * FROM usuarios WHERE DNI='$dni'");
     foreach ($query1 as $dato1){

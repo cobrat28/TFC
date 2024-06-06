@@ -2,7 +2,7 @@
 //En esta página es donde se comprueba que los datos introducidos concuerden en nuestra base de datos, en ese caso, el usuario
 //pasa a la página principal y se le crea una sesión, en caso contrario se le devuelve a la página de login   
 if (isset($_POST["email"]) && isset($_POST["passwd"])) {
-    $bd = mysqli_connect("localhost", "root", "password", "varlud");
+    $bd = mysqli_connect("localhost", "usu_varlud", "P@ssw0rd", "varlud");
     $email = $_POST["email"];
     $passwd = $_POST["passwd"];
     $query = mysqli_query($bd, "SELECT * FROM login WHERE correo='$email'");
