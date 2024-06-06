@@ -23,7 +23,7 @@ if (isset($_SESSION["admin"])) {
         foreach ($query as $data) {
             $id = $data["ID_encuesta"];
             $nom = $data["nombre"];
-            echo "<div class=''>";
+            echo "<div class='form12'>";
             echo "<form action='' method='POST'>";
             echo "<h1>" . $nom . "</h1>";
             echo "<h2>" . $id . "</h2>";
