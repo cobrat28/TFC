@@ -32,13 +32,13 @@ if(isset($_POST["email"]) && isset($_POST["passwd"])) {
             
             header("Location: pagina_principal.php");
         }else {
-            header("Location: login.html");
+            header("Location: index.php");
         }
         }
    else {
-    header("Location: login.html");
+    header("Location: index.php");
 }     
 } else {
-    header("Location: login.html");
+    header("Location: index.php");
 }
 ?>

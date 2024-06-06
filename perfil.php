@@ -52,7 +52,7 @@ if(isset($_SESSION["DNI"])){
     </div>
     <?php
 } else{
-    header("Location: login.html");
+    header("Location: index.php");
  }
  ?>
 </body>

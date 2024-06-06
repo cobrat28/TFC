@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     mysqli_query($bd1, "INSERT INTO usuarios (nombre, apellidos, fecha_nac, correo, DNI, CIF)
     VALUES ('$nombre', '$ape', '$fec_nac', '$correo', '$dni', '$cif')");
 
-    header("Location: pagina_principal.php");
+    header("Location: index.php");
     }
     ?>
 </body>

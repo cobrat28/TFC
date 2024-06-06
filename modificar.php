@@ -43,7 +43,7 @@
 <a href='Pagina_principal.php' class="form9"> Inicio. </a>
 
 <?php } else{
-    header("Location: login.html");
+    header("Location: index.php");
  } ?>
 </body>
 </html>
