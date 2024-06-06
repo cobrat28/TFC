@@ -10,7 +10,7 @@
 <?php
 session_start();
 if (isset($_SESSION["admin"])) {
-    $bd=mysqli_connect("localhost", "root","", "varlud");
+    $bd=mysqli_connect("localhost", "prueba","password", "varlud");
     $id_enc = $_SESSION["ID_encuesta"];
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $preg = $_SESSION["cant_preg"];
